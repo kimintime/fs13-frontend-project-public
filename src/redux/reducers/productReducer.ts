@@ -9,9 +9,9 @@ export const fetchAllProducts = createAsyncThunk(
     "fetchAllProducts",
     async () => {
         try {
-            const jsondata = await fetch("https://api.escuelajs.co/api/v1/products")
-            const data:Product[]|Error = await jsondata.json()
-            return data
+            const res: AxiosResponse<Product[], Product[]> = await axios.get("https://api.escuelajs.co/api/v1/products")
+            return res.data
+
         } catch (e: any) {
             console.log(e)
         }
@@ -47,14 +47,11 @@ const productSlice = createSlice({
     },
     extraReducers: (build) => {
         build.addCase(fetchAllProducts.fulfilled, (state, action) => {
-            if (action.payload && "message" in action.payload) {
-                return state
-
-            } else if (!action.payload) {
+            if (action.payload) {
+                return action.payload
+            } else {
                 return state
             }
-
-            return action.payload
         })
         build.addCase(fetchAllProducts.rejected, (state, action) => {
             console.log("Error fetching data")
