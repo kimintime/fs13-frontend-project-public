@@ -1,59 +1,42 @@
-import React, { useState } from "react"
-import { RouterProviderProps } from "react-router-dom"
+import { AppBar, Box, IconButton, Toolbar, Typography, Button } from "@mui/material"
+import { Link, useNavigate } from "react-router-dom"
 
-import { AppBar, Container, Toolbar, Typography } from "@mui/material"
-
-const Header = ({ router }: RouterProviderProps) => {
-    const pages = useState([router])
-
-    const ResponsiveAppBar = () => {
-        const [anchorElNav, setAnchorElNav] = React.useState<null | HTMLElement>(null)
-
-        const [anchorElUser, setAnchorElUser] = React.useState<null | HTMLElement>(null)
-
-        const handleOpenNavMenu = (event: React.MouseEvent<HTMLElement>) => {
-            setAnchorElNav(event.currentTarget);
-        }
-
-        const handleOpenUserMenu = (event: React.MouseEvent<HTMLElement>) => {
-            setAnchorElUser(event.currentTarget);
-        }
-
-        const handleCloseNavMenu = () => {
-            setAnchorElNav(null);
-        }
-
-        const handleCloseUserMenu = () => {
-            setAnchorElUser(null);
-        }
-
-    }
+const Header = () => {
+    const navigate = useNavigate()
 
     return (
-        <AppBar position="static">
-            <Container maxWidth="xl">
-                <Toolbar disableGutters>
-                    <Typography
-                        variant="h6"
-                        noWrap
-                        component="a"
-                        href="/"
-                        sx={{
-                            mr: 2,
-                            display: { xs: 'none', md: 'flex' },
-                            fontFamily: 'monospace',
-                            fontWeight: 700,
-                            letterSpacing: '.3rem',
-                            color: 'inherit',
-                            textDecoration: 'none',
-                        }}
+        <Box sx={{ flexGrow: 1 }}>
+            <AppBar position="static">
+                <Toolbar>
+                    <IconButton
+                        size="large"
+                        edge="start"
+                        color="inherit"
+                        aria-label="menu"
+                        sx={{ mr: 2 }}
                     >
-                        Fake Webstore
+                    </IconButton>
+                    
+                    <Typography 
+                        variant="h4" 
+                        component="div" 
+                        sx={{ flexGrow: 1 }}
+                        onClick={() => navigate("/") }
+                    >
+                        Fake Web Store
                     </Typography>
+                    <Link to="products" style={{ textDecoration: 'none', color: 'white' }}>
+                        <Button color="inherit" variant="text">Products</Button>
+                    </Link>
+                    <Link to="cart" style={{ textDecoration: 'none', color: 'white' }}>
+                        <Button color="inherit" variant="text">Shopping Cart</Button>
+                    </Link>
+                    <Link to="login" style={{ textDecoration: 'none', color: 'white' }}>
+                        <Button color="inherit" variant="text">Login</Button>
+                    </Link>
                 </Toolbar>
-            </Container>
-        </AppBar>
-
+            </AppBar>
+        </Box>
     )
 }
 
