@@ -2,51 +2,51 @@ import { useState } from "react"
 import { useAppDispatch } from "../hooks/reduxHook"
 import { sortByName, sortByPrice, sortByCatagory, createProduct } from "../redux/reducers/productReducer"
 
-import { Box, Button, FormControl, InputLabel, Select, MenuItem, Divider } from "@mui/material"
+import { Box, Button, FormControl, InputLabel, Select, MenuItem, Divider, FormLabel, RadioGroup, FormControlLabel, Radio } from "@mui/material"
 import ArrowUpwardIcon from '@mui/icons-material/ArrowUpward';
 import ArrowDownwardIcon from '@mui/icons-material/ArrowDownward';
 
 const SortAllProducts = () => {
     const dispatch = useAppDispatch()
 
-    const [typeName, setTypeName] = useState('')
+    const [type, setType] = useState('')
     const [typeCat, setTypeCat] = useState('')
-    const [typePrice, setTypePrice] = useState('')
 
-    const sortName = () => {
-        if (typeName === "desc") {
-            dispatch(sortByName("desc"))
+    const handleSubmit = () => {
+        if (typeCat === "name") {
 
-        } else {
+            if (type === "desc") {
+                dispatch(sortByName("desc"))
 
-            dispatch(sortByName("asc"))
+            } else {
+                dispatch(sortByName("asc"))
+            }
         }
 
-        setTypeName("")
-    }
+        if (typeCat === "price") {
 
-    const sortPrice = () => {
-        if (typePrice === "desc") {
-            dispatch(sortByPrice("desc"))
+            if (type === "desc") {
+                dispatch(sortByPrice("desc"))
 
-        } else {
+            } else {
 
-            dispatch(sortByPrice("asc"))
+                dispatch(sortByPrice("asc"))
+            }
         }
 
-        setTypePrice("")
-    }
+        if (typeCat === "category") {
 
-    const sortCategory = () => {
-        if (typeCat === "desc") {
-            dispatch(sortByCatagory("desc"))
+            if (type === "desc") {
+                dispatch(sortByCatagory("desc"))
 
-        } else {
+            } else {
 
-            dispatch(sortByCatagory("asc"))
+                dispatch(sortByCatagory("asc"))
+            }
+
         }
-
-        setTypeCat("")
+        setTypeCat('')
+        setType('')
     }
 
     const addProduct = () => {
@@ -61,74 +61,47 @@ const SortAllProducts = () => {
 
     return (
         <Box>
-            <Box style={{
-                display: "flex",
-                flexDirection: "row",
-                alignItems: "center"
-            }}
+            <Box
+                style={{
+                    display: "flex",
+                    
+                    alignItems: "center",
+                    justifyContent: "center",
+                }}
             >
-                <Button
-                    variant="contained"
-                    type="submit"
-                    size="large"
-                    onClick={sortName}
-                >
-                    Sort
-                    {typeName === "asc" && <ArrowUpwardIcon />}
-                    {typeName === "desc" && <ArrowDownwardIcon />}
-                </Button>
-                <FormControl sx={{ m: 1, minWidth: 80 }}>
-                    <InputLabel>Type</InputLabel>
-                    <Select
-                        value={typeName}
-                        label="Type"
-                        onChange={(event) => setTypeName(event.target.value)}
-                    >
-                        <MenuItem value="asc">Ascending</MenuItem>
-                        <MenuItem value="desc">Descending</MenuItem>
-                    </Select>
-                </FormControl>
-                <Button
-                    variant="contained"
-                    type="submit"
-                    size="large"
-                    onClick={sortPrice}
-                >
-                    Sort by Price 
-                    {typePrice === "asc" && <ArrowUpwardIcon />}
-                    {typePrice === "desc" && <ArrowDownwardIcon />} 
-                </Button>
-                <FormControl sx={{ m: 1, minWidth: 80 }}>
-                    <InputLabel>Type</InputLabel>
-                    <Select
-                        value={typePrice}
-                        label="Type"
-                        onChange={(event) => setTypePrice(event.target.value)}
-                    >
-                        <MenuItem value="asc">Ascending</MenuItem>
-                        <MenuItem value="desc">Descending</MenuItem>
-                    </Select>
-                </FormControl>
-                <Button
-                    variant="contained"
-                    type="submit"
-                    size="large"
-                    onClick={sortCategory}
-                >
-                    Sort by Category
-                    {typeCat === "asc" && <ArrowUpwardIcon />}
-                    {typeCat === "desc" && <ArrowDownwardIcon />}
-                </Button>
-                <FormControl sx={{ m: 1, minWidth: 80 }}>
-                    <InputLabel>Type</InputLabel>
+                <FormControl variant="standard" sx={{ m: 1, minWidth: 120, }}>
+                    <InputLabel>Sort by:</InputLabel>
                     <Select
                         value={typeCat}
-                        label="Type"
+                        label="Category"
                         onChange={(event) => setTypeCat(event.target.value)}
                     >
-                        <MenuItem value="asc">Ascending</MenuItem>
-                        <MenuItem value="desc">Descending</MenuItem>
+                        <MenuItem value="name">Sort by Name</MenuItem>
+                        <MenuItem value="price">Sort by Price</MenuItem>
+                        <MenuItem value="category">Sort by Category</MenuItem>
                     </Select>
+                </FormControl>
+
+                <Button
+                    style={{ margin: "5px" }}
+                    variant="contained"
+                    type="submit"
+                    onClick={handleSubmit}
+                >
+                    Sort
+                    {type === "asc" && <ArrowUpwardIcon />}
+                    {type === "desc" && <ArrowDownwardIcon />}
+                </Button>
+                <FormControl sx={{ m: 1, minWidth: 120 }}>
+                    <RadioGroup
+                        row
+                        aria-labelledby="asc-or-desc"
+                        name="radio-buttons-group"
+                        onChange={(event) => setType(event.target.value)}
+                    >
+                        <FormControlLabel value="asc" control={<Radio />} label="Ascending" />
+                        <FormControlLabel value="desc" control={<Radio />} label="Descending" />
+                    </RadioGroup>
                 </FormControl>
                 <Button
                     variant="contained"

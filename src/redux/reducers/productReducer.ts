@@ -18,6 +18,19 @@ export const fetchAllProducts = createAsyncThunk(
     }
 )
 
+export const fetchProduct = createAsyncThunk(
+    "fetchProduct",
+    async (id: number) => {
+        try {
+            const res: AxiosResponse<any, Product> = await axios.get(`https://api.escuelajs.co/api/v1/products/${id}`)
+            return res.data
+
+        } catch (e: any) { 
+            console.log(e)
+        }
+    }
+)
+
 export const createProduct = createAsyncThunk(
     "createProduct",
     async (product: CreateProduct) => {
@@ -84,6 +97,17 @@ const productSlice = createSlice({
             } else {
                 return state
             } 
+        })
+        build.addCase(fetchProduct.fulfilled, (state, action) => {
+            return action.payload
+        })
+        build.addCase(fetchProduct.rejected, (state, action) => {
+            console.log("Error fetching data")
+            return state
+        })
+        build.addCase(fetchProduct.pending, (state, action) => {
+            console.log("Data is loading...")
+            return state
         })
         build.addCase(createProduct.rejected, (state, action) => {
             console.log("Error posting new data")

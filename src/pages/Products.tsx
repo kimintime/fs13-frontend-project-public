@@ -1,8 +1,9 @@
 import { useEffect } from "react"
+import { useNavigate } from "react-router-dom"
 import { useAppDispatch, useAppSelector } from "../hooks/reduxHook"
 import { fetchAllProducts } from "../redux/reducers/productReducer"
 
-import { Box, Card, CardActions, CardMedia, Button, Typography, Grid, CardContent } from "@mui/material"
+import { Card, CardActions, CardMedia, Button, Typography, Grid, CardContent } from "@mui/material"
 
 import SortAllProducts from "../components/SortAllProducts"
 
@@ -10,22 +11,23 @@ import SortAllProducts from "../components/SortAllProducts"
 const Products = () => {
     const products = useAppSelector(state => state.productReducer)
     const dispatch = useAppDispatch()
+    const navigate = useNavigate()
 
     useEffect(() => {
         dispatch(fetchAllProducts())
     }, [])
 
     return (
-        <div style={{ margin: "0 auto" }}>
+        <div>
             <SortAllProducts />
-            <Grid container spacing={3} style={{ alignItems: "center", justifyContent: "center", marginTop: "15px" }}>
+            <Grid container spacing={1} justifyContent="center" alignItems="center">
                 {
                     products.map(product => (
-                        <Grid key={product.id} item lg={3} md={4} sm={8} xs={10}>
+                        <Grid item key={product.id} xl={3} lg={3} md={4} sm={8} xs={10}>
                             <Card sx={{ maxWidth: 345 }}>
                                 <CardMedia
                                     sx={{ height: 140 }}
-                                    image={product.category.image}
+                                    image={product.images[0]}
                                     title={product.title}
                                 />
                                 <CardContent>
@@ -40,7 +42,9 @@ const Products = () => {
                                     </Typography>
                                 </CardContent>
                                 <CardActions>
-                                    <Button size="small">Learn More</Button>
+                                    <Button 
+                                        size="small"
+                                        onClick={() => navigate(`${product.id}`) }>Learn More</Button>
                                 </CardActions>
                             </Card>
                         </Grid>
