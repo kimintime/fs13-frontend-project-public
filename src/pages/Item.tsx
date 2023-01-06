@@ -50,7 +50,6 @@ const Item = () => {
                         €{product.price}.00
                         <Button variant="contained" color="success" endIcon={<AddShoppingCartIcon />} style={{ marginLeft: "10px" }}>Add to Cart</Button>
                     </Typography>
-
                 </Grid>
                 <Grid item md={6}>
                     <ImageList cols={2} gap={8}>
