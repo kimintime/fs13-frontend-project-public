@@ -46,7 +46,14 @@ const Item = () => {
                     <Typography variant="body1" mt={5}>{product.description}</Typography>
                     <Typography variant="h4" mt={5} textAlign="center">
                         €{product.price}.00
-                        <Button variant="contained" color="success" endIcon={<AddShoppingCartIcon />} style={{ marginLeft: "10px" }}>Add to Cart</Button>
+                        <Button 
+                            variant="contained" 
+                            color="success" 
+                            endIcon={<AddShoppingCartIcon />} 
+                            style={{ marginLeft: "10px" }}
+                        >
+                            Add to Cart
+                        </Button>
                     </Typography>
                 </Grid>
                 <Grid item md={6}>
