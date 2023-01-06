@@ -1,4 +1,4 @@
-import { useEffect, useState } from "react"
+import { useState } from "react"
 import { useAppDispatch } from "../hooks/reduxHook"
 import { sortByName, sortByPrice, sortByCatagory, createProduct, filterByName } from "../redux/reducers/productReducer"
 
@@ -13,8 +13,6 @@ const SortAllProducts = () => {
     const [type, setType] = useState('')
     const [typeCat, setTypeCat] = useState('')
     const [search, setSearch] = useState('')
-
-    console.log(search)
 
     const handleSubmit = () => {
         if (typeCat === "name") {
@@ -73,7 +71,6 @@ const SortAllProducts = () => {
             <Box
                 style={{
                     display: "flex",
-
                     alignItems: "center",
                     justifyContent: "center",
                 }}
