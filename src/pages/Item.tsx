@@ -2,14 +2,13 @@ import { useEffect, useState } from "react"
 import { useParams } from "react-router-dom"
 import axios from "axios"
 
-import { Box, Button, Grid, ImageList, ImageListItem, Paper, Typography } from "@mui/material"
+import { Box, Button, Grid, ImageList, ImageListItem, Typography } from "@mui/material"
 import AddShoppingCartIcon from '@mui/icons-material/AddShoppingCart';
 
 import '@fontsource/roboto/300.css';
 import '@fontsource/roboto/400.css';
 import '@fontsource/roboto/500.css';
 import '@fontsource/roboto/700.css';
-
 
 const Item = () => {
     const { id } = useParams()
@@ -38,7 +37,6 @@ const Item = () => {
         fetchData()
     }, [])
 
-
     return (
         <Box justifyContent="center" alignItems="center" >
             <Grid container justifyContent="center" alignItems="center">
@@ -66,8 +64,6 @@ const Item = () => {
                 </Grid>
             </Grid>
         </Box>
-
-
     )
 }
 
