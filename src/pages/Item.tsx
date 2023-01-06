@@ -20,7 +20,7 @@ const Item = () => {
                 <Grid item md={6}>
                     <ImageList cols={2} gap={8}>
                         {product.images.map((item) => (
-                            <ImageListItem>
+                            <ImageListItem key={item}>
                                 <img
                                     src={item}
                                     alt={product.title}
