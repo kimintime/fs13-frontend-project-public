@@ -41,7 +41,7 @@ const Item = () => {
         <Box justifyContent="center" alignItems="center" >
             <Grid container justifyContent="center" alignItems="center">
                 <Grid item md={4} mr={10}>
-                    <Typography variant="h3">{product.title}</Typography>
+                    <Typography variant="h3" textAlign="center">{product.title}</Typography>
                     <Typography variant="subtitle1" textAlign="center">{product.category.name}</Typography>
                     <Typography variant="body1" mt={5}>{product.description}</Typography>
                     <Typography variant="h4" mt={5} textAlign="center">
