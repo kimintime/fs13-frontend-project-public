@@ -59,9 +59,9 @@ const productSlice = createSlice({
                 state.sort((a, b) => b.category.name.localeCompare(a.category.name))
             }
         },
-        // filterByName: (state, action) => {
-        //     return state.filter(product => product.title.toLowerCase().includes(action.payload.toLowerCase()));
-        // },
+        filterByName: (state, action) => {
+            return state.filter(product => product.title.toLowerCase().includes(action.payload.toLowerCase()));
+        },
 
     },
     extraReducers: (build) => {
@@ -102,5 +102,5 @@ const productSlice = createSlice({
 
 
 const productReducer = productSlice.reducer
-export const {sortByName, sortByPrice, sortByCatagory} = productSlice.actions
+export const {sortByName, sortByPrice, sortByCatagory, filterByName} = productSlice.actions
 export default productReducer;
