@@ -1,16 +1,20 @@
-import { useState } from "react"
+import { useEffect, useState } from "react"
 import { useAppDispatch } from "../hooks/reduxHook"
-import { sortByName, sortByPrice, sortByCatagory, createProduct } from "../redux/reducers/productReducer"
+import { sortByName, sortByPrice, sortByCatagory, createProduct, filterByName } from "../redux/reducers/productReducer"
 
-import { Box, Button, FormControl, InputLabel, Select, MenuItem, Divider, FormLabel, RadioGroup, FormControlLabel, Radio } from "@mui/material"
+import { Box, Button, FormControl, InputLabel, Select, MenuItem, Divider, RadioGroup, FormControlLabel, Radio, Paper, InputBase } from "@mui/material"
 import ArrowUpwardIcon from '@mui/icons-material/ArrowUpward';
 import ArrowDownwardIcon from '@mui/icons-material/ArrowDownward';
+import SearchIcon from '@mui/icons-material/Search';
 
 const SortAllProducts = () => {
     const dispatch = useAppDispatch()
 
     const [type, setType] = useState('')
     const [typeCat, setTypeCat] = useState('')
+    const [search, setSearch] = useState('')
+
+    console.log(search)
 
     const handleSubmit = () => {
         if (typeCat === "name") {
@@ -49,6 +53,11 @@ const SortAllProducts = () => {
         setType('')
     }
 
+    const handleSearch = (event: any) => {
+        event.preventDefault()
+        dispatch(filterByName(search))
+    }
+
     const addProduct = () => {
         dispatch(createProduct({
             title: "New Test Product",
@@ -64,7 +73,7 @@ const SortAllProducts = () => {
             <Box
                 style={{
                     display: "flex",
-                    
+
                     alignItems: "center",
                     justifyContent: "center",
                 }}
@@ -111,6 +120,19 @@ const SortAllProducts = () => {
                 >
                     Add
                 </Button>
+                <Paper
+                    component="form"
+                    sx={{ p: '2px 4px', display: 'flex', alignItems: 'center', width: "20%", marginLeft: "5px" }}
+                    onSubmit={handleSearch}
+                >
+                    <InputBase
+                        sx={{ ml: 1, flex: 1 }}
+                        placeholder="Search products"
+                        inputProps={{ 'aria-label': 'search' }}
+                        onChange={(event) => setSearch(event.target.value)}
+                    />
+                    <SearchIcon />
+                </Paper>
             </Box>
             <Divider variant="middle" />
         </Box>
