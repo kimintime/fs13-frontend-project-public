@@ -9,14 +9,21 @@ import '@fontsource/roboto/300.css';
 import '@fontsource/roboto/400.css';
 import '@fontsource/roboto/500.css';
 import '@fontsource/roboto/700.css';
+import { useAppDispatch } from "../hooks/reduxHook";
+import { addToCart } from "../redux/reducers/cartReducer";
+import { Product } from "../types/product";
 
 const Item = () => {
+    const dispatch = useAppDispatch()
+    const [amount, setAmount] = useState(1)
+
     const { id } = useParams()
     // const product = useAppSelector(state => state.productReducer).filter(item => item.id === Number(id))[0]
 
-    const [product, setProduct] = useState({
+    const [product, setProduct] = useState<Product>({
+        id: 0,
         title: '',
-        category: { name: '' },
+        category: { name: '', id: 0, image: '' },
         description: '',
         price: 0,
         images: []
@@ -37,6 +44,13 @@ const Item = () => {
         fetchData()
     }, [])
 
+    const handleAddToCart = (event: any) => {
+        setAmount(parseInt(event.target.value))
+        dispatch(addToCart({amount, product}))
+
+        console.log(product)
+    }
+
     return (
         <Box justifyContent="center" alignItems="center" >
             <Grid container justifyContent="center" alignItems="center">
@@ -51,6 +65,8 @@ const Item = () => {
                             color="success" 
                             endIcon={<AddShoppingCartIcon />} 
                             style={{ marginLeft: "10px" }}
+                            value={amount}
+                            onClick={(event) => handleAddToCart(event)}
                         >
                             Add to Cart
                         </Button>

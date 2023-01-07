@@ -1,4 +1,4 @@
-import { Link, useNavigate } from "react-router-dom"
+import { NavLink, useNavigate } from "react-router-dom"
 
 import { AppBar, IconButton, Toolbar, Typography, Button } from "@mui/material"
 import ShoppingCartOutlinedIcon from '@mui/icons-material/ShoppingCartOutlined';
@@ -51,7 +51,7 @@ const Header = () => {
                 </Typography>
                 {
                     pages.map(page => (
-                        <Link key={page.nav} to={page.nav} style={{ textDecoration: 'none', color: 'white' }}>
+                        <NavLink key={page.nav} to={page.nav} style={{ textDecoration: 'none', color: 'white' }}>
                             <Button 
                                 color="inherit" 
                                 variant="text" 
@@ -64,7 +64,7 @@ const Header = () => {
                             >
                                 {page.name}
                             </Button>
-                        </Link>
+                        </NavLink>
                     ))
                 }
             </Toolbar>
