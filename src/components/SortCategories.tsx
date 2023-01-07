@@ -17,8 +17,6 @@ import {
 import ArrowUpwardIcon from '@mui/icons-material/ArrowUpward';
 import ArrowDownwardIcon from '@mui/icons-material/ArrowDownward';
 import SearchIcon from '@mui/icons-material/Search';
-import { sortByCatagory } from "../redux/reducers/productReducer";
-
 
 const SortCategories = () => {
     const dispatch = useAppDispatch()
