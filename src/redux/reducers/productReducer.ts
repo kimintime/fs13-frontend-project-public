@@ -13,6 +13,20 @@ export const fetchAllProducts = createAsyncThunk(
             return res.data
 
         } catch (e: any) {
+
+            console.log(e)
+        }
+    }
+)
+
+export const fetchProductsByCategory = createAsyncThunk(
+    "fetchProductsByCategory",
+    async (id: number) => {
+        try {
+            const res: AxiosResponse<Product[], Product[]> = await axios.get(`https://api.escuelajs.co/api/v1/categories/${id}/products`)
+            return res.data
+        } catch (e: any) {
+
             console.log(e)
         }
     }
@@ -78,6 +92,22 @@ const productSlice = createSlice({
             return state
         })
         build.addCase(fetchAllProducts.pending, (state, action) => {
+            console.log("Data is loading...")
+            return state
+        })
+        build.addCase(fetchProductsByCategory.fulfilled, (state, action) => {
+            if (action.payload) {
+                return action.payload
+
+            } else {
+                return state
+            }
+        })
+        build.addCase(fetchProductsByCategory.rejected, (state, action) => {
+            console.log("Error fetching data")
+            return state
+        })
+        build.addCase(fetchProductsByCategory.pending, (state, action) => {
             console.log("Data is loading...")
             return state
         })

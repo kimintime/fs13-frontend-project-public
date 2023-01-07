@@ -12,6 +12,10 @@ const Header = () => {
             name: 'Products'
         },
         {
+            nav: 'categories',
+            name: 'Categories'
+        },
+        {
             nav: 'cart',
             name: 'Shopping Cart',
         },

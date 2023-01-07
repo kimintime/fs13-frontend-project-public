@@ -45,7 +45,6 @@ const SortAllProducts = () => {
 
                 dispatch(sortByCatagory("asc"))
             }
-
         }
         setTypeCat('')
         setType('')

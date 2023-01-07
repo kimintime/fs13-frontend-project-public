@@ -6,6 +6,8 @@ import Item from "./pages/Item"
 import Login from "./pages/Login"
 import Products from "./pages/Products"
 import Profile from "./pages/Profile"
+import BrowseCategories from "./pages/BrowseCategories"
+import CategoryProducts from "./pages/CategoryProducts"
 
 
 const App = () => {
@@ -21,6 +23,15 @@ const App = () => {
         {
           path: "products/:id",
           element: <Item />,
+        },
+        {
+          path: "categories",
+          element: <BrowseCategories />
+        },
+        {
+          path: "categories/:id/products",
+          element: <CategoryProducts />
+
         },
         {
           path: "cart",

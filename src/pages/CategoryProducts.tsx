@@ -1,20 +1,21 @@
 import { useEffect } from "react"
-import { useNavigate } from "react-router-dom"
-import { useAppDispatch, useAppSelector } from "../hooks/reduxHook"
-import { fetchAllProducts } from "../redux/reducers/productReducer"
+import { Link, useParams } from "react-router-dom"
 
 import { Card, CardActions, CardMedia, Button, Typography, Grid, CardContent } from "@mui/material"
 
+import { useAppDispatch, useAppSelector } from "../hooks/reduxHook"
+import { fetchProductsByCategory } from "../redux/reducers/productReducer"
 import SortAllProducts from "../components/SortAllProducts"
 
 
-const Products = () => {
+const CategoryProducts = () => {
     const products = useAppSelector(state => state.productReducer)
     const dispatch = useAppDispatch()
-    const navigate = useNavigate()
-    
+    const { id } = useParams()
+
     useEffect(() => {
-        dispatch(fetchAllProducts())
+
+        dispatch(fetchProductsByCategory(Number(id)))
     }, [])
 
     return (
@@ -42,9 +43,13 @@ const Products = () => {
                                     </Typography>
                                 </CardContent>
                                 <CardActions>
-                                    <Button 
-                                        size="small"
-                                        onClick={() => navigate(`${product.id}`) }>Learn More</Button>
+                                    <Link to={`/products/${product.id}`}>
+                                        <Button
+                                            size="small"
+                                        >
+                                            Learn More
+                                        </Button>
+                                    </Link>
                                 </CardActions>
                             </Card>
                         </Grid>
@@ -55,4 +60,4 @@ const Products = () => {
     )
 }
 
-export default Products
+export default CategoryProducts
