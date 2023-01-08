@@ -2,7 +2,7 @@ import { useState } from "react"
 import { useAppDispatch } from "../hooks/reduxHook"
 import { sortByName, sortByPrice, sortByCatagory, createProduct, filterByName } from "../redux/reducers/productReducer"
 
-import { Box, Button, FormControl, InputLabel, Select, MenuItem, Divider, RadioGroup, FormControlLabel, Radio, Paper, InputBase } from "@mui/material"
+import { Box, Button, FormControl, InputLabel, Select, MenuItem, Divider, RadioGroup, FormControlLabel, Radio, Paper, InputBase, IconButton } from "@mui/material"
 import ArrowUpwardIcon from '@mui/icons-material/ArrowUpward';
 import ArrowDownwardIcon from '@mui/icons-material/ArrowDownward';
 import SearchIcon from '@mui/icons-material/Search';
@@ -52,7 +52,9 @@ const SortAllProducts = () => {
 
     const handleSearch = (event: any) => {
         event.preventDefault()
+
         dispatch(filterByName(search))
+        setSearch('')
     }
 
     const addProduct = () => {
@@ -127,7 +129,9 @@ const SortAllProducts = () => {
                         inputProps={{ 'aria-label': 'search' }}
                         onChange={(event) => setSearch(event.target.value)}
                     />
+                    <IconButton onClick={handleSearch}>
                     <SearchIcon />
+                    </IconButton>
                 </Paper>
             </Box>
             <Divider variant="middle" />

@@ -10,7 +10,7 @@ import InfoIcon from '@mui/icons-material/Info';
 const Categories = () => {
     const categories = useAppSelector(state => state.categoryReducer)
     const dispatch = useAppDispatch()
-
+    
     useEffect(() => {
         dispatch(fetchCategories())
     }, [dispatch])

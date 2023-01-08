@@ -1,5 +1,5 @@
 import { useEffect } from "react"
-import { useNavigate } from "react-router-dom"
+import { Link } from "react-router-dom"
 import { useAppDispatch, useAppSelector } from "../hooks/reduxHook"
 import { fetchAllProducts } from "../redux/reducers/productReducer"
 
@@ -9,7 +9,6 @@ import { Box } from "@mui/system"
 const FeaturedProducts = () => {
     const products = useAppSelector(state => state.productReducer)
     const dispatch = useAppDispatch()
-    const navigate = useNavigate()
 
     useEffect(() => {
         dispatch(fetchAllProducts())
@@ -39,9 +38,13 @@ const FeaturedProducts = () => {
                                 </Typography>
                             </CardContent>
                             <CardActions>
-                                <Button
-                                    size="small"
-                                    onClick={() => navigate(`${product.id}`)}>Learn More</Button>
+                                <Link to={`/products/${product.id}`}>
+                                    <Button
+                                        size="small"
+                                    >
+                                        Learn More
+                                    </Button>
+                                </Link>
                             </CardActions>
                         </Card>
                     </Box>
