@@ -1,12 +1,10 @@
 import { useEffect } from "react"
 import { Link, useParams } from "react-router-dom"
-
-import { Card, CardActions, CardMedia, Button, Typography, Grid, CardContent } from "@mui/material"
-
 import { useAppDispatch, useAppSelector } from "../hooks/reduxHook"
 import { fetchProductsByCategory } from "../redux/reducers/productReducer"
 import SortAllProducts from "../components/SortAllProducts"
 
+import { Card, CardActions, CardMedia, Button, Typography, Grid, CardContent } from "@mui/material"
 
 const CategoryProducts = () => {
     const products = useAppSelector(state => state.productReducer)

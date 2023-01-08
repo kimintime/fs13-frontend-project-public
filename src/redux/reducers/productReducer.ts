@@ -81,8 +81,9 @@ const productSlice = createSlice({
     extraReducers: (build) => {
         build.addCase(fetchAllProducts.fulfilled, (state, action) => {
             if (action.payload) {
+                console.log("Promise fulfilled")
                 return action.payload
-
+                
             } else {
                 return state
             }
