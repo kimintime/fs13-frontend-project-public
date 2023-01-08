@@ -9,24 +9,23 @@ const cartSlice = createSlice({
     reducers: {
         addToCart: (state, action: PayloadAction<CartItem>) => {
             let isInCart = false
-            let cartAmount = 0
+            let cartAmount = 1
 
             state.forEach(item => {
-                if (item.product.id === action.payload.product.id) {
+                if (item.id === action.payload.id) {
                     isInCart = true
-                    cartAmount += cartAmount
+                    cartAmount += item.amount
                 }
+
+                return item
             })
 
-            let newItem: CartItem = {
-                amount: cartAmount + action.payload.amount,
-                product: action.payload.product
-            }
-
+            const newItem: CartItem = {...action.payload, amount: cartAmount }
+            
             if (isInCart) {
                 return (
                     state.map(item => 
-                        item.product.id === action.payload.product.id ? newItem : item))
+                        item.id === action.payload.id ? newItem : item))
 
             } else {
 
@@ -37,24 +36,21 @@ const cartSlice = createSlice({
             let cartAmount = 0
 
             state.forEach(item => {
-                if ( item.product.id === action.payload.product.id) {
+                if ( item.id === action.payload.id) {
                     cartAmount = item.amount
                 }
             })
 
             if (cartAmount === 1) {
-                return state.filter(item => item.product.id !== action.payload.product.id)
+                return state.filter(item => item.id !== action.payload.id)
 
             } else {
 
-                let newItem: CartItem = {
-                    amount: cartAmount --,
-                    product: action.payload.product, 
-                }
+                let newItem: CartItem = {...action.payload, amount: cartAmount - 1 }
 
                 return (
                     state.map(item => 
-                        item.product.id === action.payload.product.id ? newItem : item)
+                        item.id === action.payload.id ? newItem : item)
                 )
             }
         },

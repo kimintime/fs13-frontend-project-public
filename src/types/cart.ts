@@ -1,6 +1,5 @@
 import { Product } from "./product"
 
-export interface CartItem {
-    product: Product,
+export interface CartItem extends Product {
     amount: number
 }

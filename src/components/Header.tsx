@@ -1,12 +1,15 @@
+import { useEffect, useState } from "react";
 import { NavLink, useNavigate } from "react-router-dom"
-
-import { AppBar, IconButton, Toolbar, Typography, Button } from "@mui/material"
+import { AppBar, IconButton, Toolbar, Typography, Button, Badge } from "@mui/material"
 import ShoppingCartOutlinedIcon from '@mui/icons-material/ShoppingCartOutlined';
 import AccountCircleOutlinedIcon from '@mui/icons-material/AccountCircleOutlined';
 import HomeIcon from '@mui/icons-material/Home';
+import { useAppSelector } from "../hooks/reduxHook";
 
 const Header = () => {
     const navigate = useNavigate()
+    const [badge, setBadge] = useState(0)
+    const cart = useAppSelector(state => state.cartReducer)
     const pages = [
         {
             nav: '/',
@@ -29,6 +32,20 @@ const Header = () => {
             name: 'Login'
         },
     ]
+
+    const handleBadge = () => {
+        let sum = 0
+        cart.forEach(item => {
+            sum += item.amount 
+        })
+
+        setBadge(sum)
+    }
+
+    useEffect(() => {
+        handleBadge()
+
+    })
 
     return (
         <AppBar position="sticky">
@@ -57,7 +74,7 @@ const Header = () => {
                                 variant="text" 
                                 startIcon=
                                 {
-                                    (page.nav === "cart" && <ShoppingCartOutlinedIcon />) || 
+                                    (page.nav === "cart" && <Badge badgeContent={badge} color="success"><ShoppingCartOutlinedIcon /></Badge>) || 
                                     (page.nav === "/" && <HomeIcon />) || 
                                     (page.nav === "login" && <AccountCircleOutlinedIcon />)
                                 } 
@@ -65,6 +82,7 @@ const Header = () => {
                                 {page.name}
                             </Button>
                         </NavLink>
+                        
                     ))
                 }
             </Toolbar>

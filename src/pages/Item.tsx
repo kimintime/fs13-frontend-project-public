@@ -1,5 +1,8 @@
 import { useEffect, useState } from "react"
 import { useParams } from "react-router-dom"
+import { useAppDispatch } from "../hooks/reduxHook";
+import { addToCart } from "../redux/reducers/cartReducer";
+import { CartItem } from "../types/cart";
 import axios from "axios"
 
 import { Box, Button, Grid, ImageList, ImageListItem, Typography } from "@mui/material"
@@ -9,24 +12,19 @@ import '@fontsource/roboto/300.css';
 import '@fontsource/roboto/400.css';
 import '@fontsource/roboto/500.css';
 import '@fontsource/roboto/700.css';
-import { useAppDispatch } from "../hooks/reduxHook";
-import { addToCart } from "../redux/reducers/cartReducer";
-import { Product } from "../types/product";
 
 const Item = () => {
     const dispatch = useAppDispatch()
-    const [amount, setAmount] = useState(1)
-
     const { id } = useParams()
-    // const product = useAppSelector(state => state.productReducer).filter(item => item.id === Number(id))[0]
 
-    const [product, setProduct] = useState<Product>({
+    const [product, setProduct] = useState<CartItem>({
         id: 0,
         title: '',
         category: { name: '', id: 0, image: '' },
         description: '',
         price: 0,
-        images: []
+        images: [],
+        amount: 1,
     })
 
     const fetchData = async () => {
@@ -44,11 +42,9 @@ const Item = () => {
         fetchData()
     }, [])
 
-    const handleAddToCart = (event: any) => {
-        setAmount(parseInt(event.target.value))
-        dispatch(addToCart({amount, product}))
+    const handleAddToCart = () => {
 
-        console.log(product)
+        dispatch(addToCart(product))
     }
 
     return (
@@ -65,8 +61,7 @@ const Item = () => {
                             color="success" 
                             endIcon={<AddShoppingCartIcon />} 
                             style={{ marginLeft: "10px" }}
-                            value={amount}
-                            onClick={(event) => handleAddToCart(event)}
+                            onClick={() => handleAddToCart()}
                         >
                             Add to Cart
                         </Button>
