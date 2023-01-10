@@ -5,11 +5,12 @@ import Root from "./pages/Root"
 import Item from "./pages/Item"
 import Login from "./pages/Login"
 import Products from "./pages/Products"
+import ProtectedProfile from "./components/ProtectedProfile"
 import Profile from "./pages/Profile"
 import BrowseCategories from "./pages/BrowseCategories"
 import CategoryProducts from "./pages/CategoryProducts"
 import Home from "./pages/Home"
-
+import Register from "./pages/Register"
 
 const App = () => {
   const router = createBrowserRouter([
@@ -48,8 +49,18 @@ const App = () => {
           element: <Login />,
         },
         {
+          path: "register",
+          element: <Register />,
+
+        },
+        {
           path: "profile",
-          element: <Profile />,
+          element: (
+            <ProtectedProfile>
+              <Profile />
+
+            </ProtectedProfile>
+          ),
         },
         {
           path: "admin",

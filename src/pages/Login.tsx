@@ -2,6 +2,7 @@ import { useState } from "react"
 import { useAppDispatch, useAppSelector } from "../hooks/reduxHook"
 import { authenticateCredentials } from "../redux/reducers/userReducer"
 import { Box, Button, Divider, Paper, TextField, Typography } from "@mui/material"
+import { NavLink } from "react-router-dom"
 
 
 
@@ -14,7 +15,7 @@ const Login = () => {
 
 
     const handleLogin = () => {
-        dispatch(authenticateCredentials({email: email, password: password}))
+        dispatch(authenticateCredentials({ email: email, password: password }))
         setEmail("")
         setPassword("")
     }
@@ -29,25 +30,25 @@ const Login = () => {
             alignItems: "center",
             marginTop: 3,
         }}>
-            <Paper 
-                sx={{marginTop: 5, maxWidth: 500}}
+            <Paper
+                sx={{ marginTop: 5, maxWidth: 500 }}
                 component="form"
             >
-                <Typography 
+                <Typography
                     variant="h5"
-                    sx={{marginTop: 3, marginLeft: 5}}
+                    sx={{ marginTop: 3, marginLeft: 5 }}
                 >
                     Sign In
                 </Typography>
                 <Divider variant="middle" />
-                <Typography 
+                <Typography
                     variant="subtitle2"
-                    sx={{marginTop: 2, marginLeft: 5}}
+                    sx={{ marginTop: 2, marginLeft: 5 }}
                 >
                     Enter your email address
                 </Typography>
                 <TextField
-                    sx={{marginLeft: 5, marginTop: 1, minWidth: 300}}
+                    sx={{ marginLeft: 5, marginTop: 1, minWidth: 300 }}
                     required
                     label="Email"
                     type="email"
@@ -55,15 +56,15 @@ const Login = () => {
                     autoComplete={"on"}
                     variant="outlined"
                     onChange={(event) => setEmail(event.target.value)}
-                />   
-                <Typography 
+                />
+                <Typography
                     variant="subtitle2"
-                    sx={{marginLeft: 5, marginTop: 2}}
+                    sx={{ marginLeft: 5, marginTop: 2 }}
                 >
                     Enter your password
                 </Typography>
                 <TextField
-                    sx={{marginLeft: 5, marginTop: 1, minWidth: 300}}
+                    sx={{ marginLeft: 5, marginTop: 1, minWidth: 300 }}
                     required
                     label="Password"
                     type="password"
@@ -71,34 +72,36 @@ const Login = () => {
                     variant="filled"
                     onChange={(event) => setPassword(event.target.value)}
                 />
-                <Box 
+                <Box
                     sx={{
-                        display: "flex", 
-                        flexDirection: "column", 
-                        justifyContent: "center", 
+                        display: "flex",
+                        flexDirection: "column",
+                        justifyContent: "center",
                         alignItems: "center",
                         marginTop: 5,
                         marginBottom: 2
                     }}
                 >
-                    <Button 
-                        color="success" 
+                    <Button
+                        color="success"
                         variant="contained"
                         onClick={(event) => handleLogin()}
                     >
                         Login
                     </Button>
                 </Box>
-                <Box sx={{marginLeft: 4, marginRight: 4, marginBottom: 4}}>
+                <Box sx={{ marginLeft: 4, marginRight: 4, marginBottom: 4 }}>
                     <Divider variant="middle" />
                     <Typography align="center">New user?</Typography>
-                    <Box sx={{display: "flexbox", justifyContent: "center", alignItems: "center"}}>
-                        <Button
-                            variant="contained"
-                            sx={{marginTop: 2, width: 300}}
-                        >
-                            Register
-                        </Button>
+                    <Box sx={{ display: "flexbox", justifyContent: "center", alignItems: "center" }}>
+                        <NavLink to='/register}'>
+                            <Button
+                                variant="contained"
+                                sx={{ marginTop: 2, width: 300 }}
+                            >
+                                Register
+                            </Button>
+                        </NavLink>
                     </Box>
                 </Box>
             </Paper>

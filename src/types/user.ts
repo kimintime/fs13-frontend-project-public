@@ -37,3 +37,9 @@ export interface ReturnedCredentials {
     access_token: string
 }
 
+export type menu = {
+    id: number
+    state: string
+    action: () => void
+}
+
