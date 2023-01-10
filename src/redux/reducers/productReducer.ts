@@ -26,7 +26,7 @@ export const fetchProductsByCategory = createAsyncThunk(
             const res: AxiosResponse<Product[], Product[]> = await axios.get(`https://api.escuelajs.co/api/v1/categories/${id}/products`)
             return res.data
         } catch (e: any) {
-
+            //Find way to show error
             console.log(e)
         }
     }

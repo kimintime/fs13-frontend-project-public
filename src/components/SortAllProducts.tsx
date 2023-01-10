@@ -1,6 +1,6 @@
 import { useState } from "react"
 import { useAppDispatch } from "../hooks/reduxHook"
-import { sortByName, sortByPrice, sortByCatagory, createProduct, filterByName } from "../redux/reducers/productReducer"
+import { sortByName, sortByPrice, sortByCatagory, filterByName, fetchAllProducts } from "../redux/reducers/productReducer"
 
 import { Box, Button, FormControl, InputLabel, Select, MenuItem, Divider, RadioGroup, FormControlLabel, Radio, Paper, InputBase, IconButton } from "@mui/material"
 import ArrowUpwardIcon from '@mui/icons-material/ArrowUpward';
@@ -54,18 +54,21 @@ const SortAllProducts = () => {
         event.preventDefault()
 
         dispatch(filterByName(search))
-        setSearch('')
+
+        if (search === "") {
+            dispatch(fetchAllProducts())
+        }
     }
 
-    const addProduct = () => {
-        dispatch(createProduct({
-            title: "New Test Product",
-            price: 10,
-            description: "A description",
-            categoryId: 1,
-            images: ["https://placeimg.com/640/480/any"],
-        }))
-    }
+    // const addProduct = () => {
+    //     dispatch(createProduct({
+    //         title: "New Test Product",
+    //         price: 10,
+    //         description: "A description",
+    //         categoryId: 1,
+    //         images: ["https://placeimg.com/640/480/any"],
+    //     }))
+    // }
 
     return (
         <Box>
@@ -110,14 +113,14 @@ const SortAllProducts = () => {
                         <FormControlLabel value="desc" control={<Radio />} label="Descending" />
                     </RadioGroup>
                 </FormControl>
-                <Button
+                {/* <Button
                     variant="contained"
                     type="submit"
                     size="large"
                     onClick={addProduct}
                 >
                     Add
-                </Button>
+                </Button> */}
                 <Paper
                     component="form"
                     sx={{ p: '2px 4px', display: 'flex', alignItems: 'center', width: "20%", marginLeft: "5px" }}
