@@ -6,13 +6,11 @@ import ShoppingCartOutlinedIcon from '@mui/icons-material/ShoppingCartOutlined';
 import AccountCircleOutlinedIcon from '@mui/icons-material/AccountCircleOutlined';
 import HomeIcon from '@mui/icons-material/Home';
 
-import { useAppSelector, useAppDispatch } from "../hooks/reduxHook";
-import { authenticateCredentials } from "../redux/reducers/userReducer";
+import { useAppSelector } from "../hooks/reduxHook";
 
 
 const Header = () => {
     const navigate = useNavigate()
-    const dispatch = useAppDispatch()
 
     const user = useAppSelector(state => state.userReducer)
     const cart = useAppSelector(state => state.cartReducer)
@@ -50,10 +48,6 @@ const Header = () => {
 
         setBadge(sum)
     }
-
-    useEffect(() => {
-        dispatch(authenticateCredentials({ email: user.currentUser.email, password: user.currentUser.password }));
-    }, [dispatch, user.currentUser]);
 
     useEffect(() => {
         handleBadge()

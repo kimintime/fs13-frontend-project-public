@@ -19,7 +19,7 @@ export interface CreateUser {
     name: string
     email: string
     password: string
-    avatar: string
+    avatar: URL
 }
 
 export interface EditUser {

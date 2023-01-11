@@ -2,13 +2,14 @@ import { useState } from "react"
 import { useAppDispatch, useAppSelector } from "../hooks/reduxHook"
 import { authenticateCredentials } from "../redux/reducers/userReducer"
 import { Box, Button, Divider, Paper, TextField, Typography } from "@mui/material"
-import { NavLink } from "react-router-dom"
+import { NavLink, useNavigate } from "react-router-dom"
 
 
 
 const Login = () => {
     const user = useAppSelector(state => state.userReducer)
     const dispatch = useAppDispatch()
+    const navigate = useNavigate()
 
     const [email, setEmail] = useState("")
     const [password, setPassword] = useState("")
@@ -16,8 +17,8 @@ const Login = () => {
 
     const handleLogin = () => {
         dispatch(authenticateCredentials({ email: email, password: password }))
-        setEmail("")
-        setPassword("")
+        navigate("/")
+
     }
 
     console.log(user)
@@ -85,7 +86,7 @@ const Login = () => {
                     <Button
                         color="success"
                         variant="contained"
-                        onClick={(event) => handleLogin()}
+                        onClick={handleLogin}
                     >
                         Login
                     </Button>
@@ -94,7 +95,7 @@ const Login = () => {
                     <Divider variant="middle" />
                     <Typography align="center">New user?</Typography>
                     <Box sx={{ display: "flexbox", justifyContent: "center", alignItems: "center" }}>
-                        <NavLink to='/register}'>
+                        <NavLink to='/register'>
                             <Button
                                 variant="contained"
                                 sx={{ marginTop: 2, width: 300 }}

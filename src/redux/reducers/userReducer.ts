@@ -44,6 +44,22 @@ export const createUser = createAsyncThunk(
     }
 )
 
+// export const createUser = createAsyncThunk(
+//     "createUser",
+//     async (user: CreateUser) => {
+//       try {
+//         const response = await axios.post(
+//           "https://api.escuelajs.co/api/v1/users/",
+//           user
+//         );
+//         const data: User | Error = response.data;
+//         return data;
+//       } catch (e) {
+//         throw new Error("Cannot add new user");
+//       }
+//     }
+//   );
+
 export const updateUser = createAsyncThunk(
     "updateUser",
     async (user: User) => {
@@ -128,8 +144,7 @@ const userSlice = createSlice({
             return state
         })
         build.addCase(createUser.fulfilled, (state, action) => {
-            console.log("Promise fulfilled")
-            return action.payload
+            return state
         })
         build.addCase(createUser.rejected, (state, action) => {
             console.log("Error fetching data")

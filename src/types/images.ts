@@ -1,0 +1,1 @@
+export const userPic: string = "https://picsum.photos/200"
