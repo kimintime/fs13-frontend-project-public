@@ -14,7 +14,7 @@ const CategoryProducts = () => {
     useEffect(() => {
 
         dispatch(fetchProductsByCategory(Number(id)))
-    }, [])
+    }, [dispatch, id])
 
     return (
         <div>
