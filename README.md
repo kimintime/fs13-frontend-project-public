@@ -26,6 +26,8 @@ admin123
 ## Instructions
 - The layout of the homepage, all products, and their categories are dependent on the fake API. Having said that, the homepage is limited to showing the first six categories (if they exist), and six products as featured products (if they exist).
 
+![](Screenshots/Screen Shot 2023-01-12 at 18.42.47.png)
+
 
 ![](Screen%20Shot%202023-01-12%20at%2018.42.47%202.png)
 
