@@ -26,19 +26,20 @@ admin123
 ## Instructions
 - The layout of the homepage, all products, and their categories are dependent on the fake API. Having said that, the homepage is limited to showing the first six categories (if they exist), and six products as featured products (if they exist).
 
-![](Screenshots/Screen Shot 2023-01-12 at 18.42.47.png)
+
+<img width="1440" alt="Screen Shot 2023-01-13 at 0 22 15" src="https://user-images.githubusercontent.com/40215472/212193739-88fddf18-e2ad-4a46-839e-5f58a57eabda.png">
 
 
-![](Screen%20Shot%202023-01-12%20at%2018.42.47%202.png)
 
 - To browse the products in a category, click on information `(i)` button in its bottom heading. Click on `Learn More` to go to an individual product page, and add that product to the cart if you like.
 
 - From the navbar at the top of the page, you can browse all products, or all categories, access the shopping cart, and the profile page. If not logged-in, the profile page will redirect you to login or register as a new customer.
 
 
-![](Screen%20Shot%202023-01-12%20at%2018.50.45.png)
+<img width="1440" alt="Screen Shot 2023-01-12 at 18 50 45" src="https://user-images.githubusercontent.com/40215472/212193913-7fe7d8f4-4e34-4806-a99e-17b37d74090e.png">
 
-![](Screen%20Shot%202023-01-12%20at%2018.51.03.png)
+<img width="1440" alt="Screen Shot 2023-01-12 at 18 51 03" src="https://user-images.githubusercontent.com/40215472/212194027-16ef05e1-f02a-4cf0-9771-ecb6bde7bda1.png">
+
 
 ## Features
 ### Navbar
@@ -47,17 +48,21 @@ admin123
 - The shopping cart badge appears with a count of items in the cart, if there’s anything in the cart.
 
 
-![](Screen%20Shot%202023-01-12%20at%2018.53.47.png)
+<img width="1440" alt="Screen Shot 2023-01-12 at 18 53 47" src="https://user-images.githubusercontent.com/40215472/212194109-e285dfc7-063c-48ee-8ef8-05d9bc4a8666.png">
+
 
 ### Products and Categories Pages
-- The pages for all products and all categories allows you to sort ascending or descending according to name, category name, or price. The sort button changes according to ascending or descending. 
+- The pages for all products and all categories allows you to sort ascending or descending according to name, category name, or price. The sort button changes according to ascending or descending.
 
-![](Screen%20Shot%202023-01-12%20at%2022.57.07.png)
+
+<img width="1440" alt="Screen Shot 2023-01-12 at 22 57 07" src="https://user-images.githubusercontent.com/40215472/212194202-0f09eebb-0a6e-4806-a220-c8f1300af6ea.png">
+
 
 - In the case of the categories page, the sorting option is only of course by name.
 
 
-![](Screen%20Shot%202023-01-12%20at%2022.55.41.png)
+<img width="1440" alt="Screen Shot 2023-01-13 at 0 27 59" src="https://user-images.githubusercontent.com/40215472/212194555-0c84a061-7bf9-491f-9bf0-b765acdfff5e.png">
+
 
 - The reason there is a separate page for browsing by product and by category, and where there is a search feature just for category, is that being an open API, people are always adding to it, there can sometimes be many categories, so only featured categories are shown on the home page. Users should be able to browse all categories if they wish.
 
@@ -67,33 +72,38 @@ admin123
 - The layout of the Cart page changes slightly depending on when you open it, and what’s there. If there’s no products, it’s fairly empty.
 
 
-![](Screen%20Shot%202023-01-12%20at%2018.55.01.png)
+<img width="1440" alt="Screen Shot 2023-01-12 at 18 55 01" src="https://user-images.githubusercontent.com/40215472/212194645-27182c74-821a-483e-be68-8f8698cf7ee0.png">
+
 
 - The Cart page will list the items in the cart, and allow you to add and remove items with a respective click of the plus and minus buttons. You can also quickly empty the cart. There’s no checkout page by design, and you do not have to be logged in to add items to the shopping cart.
 
 
-![](Screen%20Shot%202023-01-12%20at%2018.54.36.png)
+<img width="1440" alt="Screen Shot 2023-01-12 at 18 54 36" src="https://user-images.githubusercontent.com/40215472/212194835-4e127b75-9862-424b-9680-f6c996cf2ea7.png">
+
 
 ### Users
-- When registering to the page, all users are assigned the role of customer, and as such, all customers may edit their user information on the Profile page. The admin account however, is protected from editing.
+- When registering to the page, all users are assigned the role of customer, and as such, all customers may edit their user information on the Profile page. The admin account however, is protected from editing. While editing your user information, there's also the ability to show and hide the password.
 
 
-![](Screen%20Shot%202023-01-12%20at%2018.43.49.png)
+<img width="480" alt="Screen Shot 2023-01-12 at 18 43 49" src="https://user-images.githubusercontent.com/40215472/212195075-c54d67c1-4611-4ebf-a966-38d2de6db633.png">
 
-![](Screen%20Shot%202023-01-12%20at%2018.44.57.png)
 
-![](Screen%20Shot%202023-01-12%20at%2018.56.24.png)
+<img width="476" alt="Screen Shot 2023-01-12 at 18 44 57" src="https://user-images.githubusercontent.com/40215472/212195145-16c7fb79-e7d0-4d1c-9054-a81d9abb9260.png">
+
+<img width="409" alt="Screen Shot 2023-01-12 at 18 56 24" src="https://user-images.githubusercontent.com/40215472/212195278-2c66ad65-a2ac-4ec0-b98c-82e2b43661df.png">
+
 
 - By logging into the admin account, it’s possible to test out the admin features of the website. On the Products page, a new button called Add appears, where it’s possible to add new products. On the individual product pages, there’s a new button to modify or delete current products. 
 
 
-![](Screen%20Shot%202023-01-12%20at%2018.57.11.png)
+<img width="1440" alt="Screen Shot 2023-01-13 at 0 32 55" src="https://user-images.githubusercontent.com/40215472/212195625-96774a6e-2cac-4ca5-ab9a-fcdeda6d18fd.png">
 
-![](Screen%20Shot%202023-01-12%20at%2018.57.42.png)
+<img width="1440" alt="Screen Shot 2023-01-13 at 0 34 13" src="https://user-images.githubusercontent.com/40215472/212195865-c1917821-a8dd-4468-bc38-a40485b53d77.png">
 
-![](Screen%20Shot%202023-01-12%20at%2018.58.14.png)
+<img width="1440" alt="Screen Shot 2023-01-12 at 18 58 14" src="https://user-images.githubusercontent.com/40215472/212195931-454c2ee2-594a-4f98-ab07-fa014af238c9.png">
 
-![](Screen%20Shot%202023-01-12%20at%2018.58.48.png)
+<img width="1440" alt="Screen Shot 2023-01-12 at 18 58 48" src="https://user-images.githubusercontent.com/40215472/212195972-48889b53-84c5-4771-9f84-b0690e70294d.png">
+
 
 #### Note!
 - As this is an open server, please be mindful of how many items or user accounts you add and modify, and never post personal information. Their API will return errors if you try to add or modify an item with a price of zero. The website will alert you, but you will have to start again.
@@ -105,45 +115,10 @@ admin123
 
 - Light and dark mode.
 
+- Work on unit testing.
+
 ## Application File Structure
-src
- ┣ components
- ┃ ┣ AddProductModal.tsx
- ┃ ┣ FeaturedCategories.tsx
- ┃ ┣ FeaturedProducts.tsx
- ┃ ┣ Header.tsx
- ┃ ┣ ProtectedProfile.tsx
- ┃ ┣ SortAllProducts.tsx
- ┃ ┣ SortCategories.tsx
- ┃ ┗ UpdateProductModal.tsx
- ┣ hooks
- ┃ ┗ reduxHook.ts
- ┣ pages
- ┃ ┣ BrowseCategories.tsx
- ┃ ┣ Cart.tsx
- ┃ ┣ CategoryProducts.tsx
- ┃ ┣ Home.tsx
- ┃ ┣ Item.tsx
- ┃ ┣ Login.tsx
- ┃ ┣ Products.tsx
- ┃ ┣ Profile.tsx
- ┃ ┣ Register.tsx
- ┃ ┗ Root.tsx
- ┣ redux
- ┃ ┣ reducers
- ┃ ┃ ┣ cartReducer.ts
- ┃ ┃ ┣ categoryReducer.ts
- ┃ ┃ ┣ productReducer.ts
- ┃ ┃ ┗ userReducer.ts
- ┃ ┗ store.ts
- ┣ types
- ┃ ┣ cart.ts
- ┃ ┣ category.ts
- ┃ ┣ images.ts
- ┃ ┣ product.ts
- ┃ ┗ user.ts
- ┣ App.tsx
- ┣ index.tsx
- ┣ react-app-env.d.ts
- ┣ reportWebVitals.ts
- ┗ setupTests.ts
+
+
+<img width="1164" alt="Screen Shot 2023-01-12 at 23 37 30" src="https://user-images.githubusercontent.com/40215472/212196889-a31cea3f-cd21-4151-8150-0be8c82994d9.png">
+
