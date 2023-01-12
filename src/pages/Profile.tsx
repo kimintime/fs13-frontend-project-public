@@ -62,7 +62,7 @@ const Profile = () => {
     const userLogout = () => {
         dispatch(logoutUser())
     }
-    
+
     return (
         <Box
             sx={{
@@ -103,12 +103,15 @@ const Profile = () => {
                                         /> : user.currentUser.name}
                                 </TableCell>
                                 <TableCell>
-                                    <IconButton
-                                        color={change ? "secondary" : "primary"}
-                                        onClick={handleChange}
-                                    >
-                                        <EditIcon />
-                                    </IconButton>
+                                    {user.currentUser.role !== "admin" ?
+                                        <IconButton
+                                            color={change ? "secondary" : "primary"}
+                                            onClick={handleChange}
+                                        >
+                                            <EditIcon />
+                                        </IconButton>
+                                        : null
+                                    }
                                 </TableCell>
                             </TableRow>
                             <TableRow>
@@ -124,12 +127,16 @@ const Profile = () => {
                                         /> : user.currentUser.email}
                                 </TableCell>
                                 <TableCell>
-                                    <IconButton
-                                        color={change ? "secondary" : "primary"}
-                                        onClick={handleChange}
-                                    >
-                                        <EditIcon />
-                                    </IconButton>
+                                    {user.currentUser.role !== "admin" ?
+                                        <IconButton
+                                            color={change ? "secondary" : "primary"}
+                                            onClick={handleChange}
+                                        >
+                                            <EditIcon />
+                                        </IconButton>
+                                        : null
+                                    }
+
                                 </TableCell>
                             </TableRow>
                             <TableRow>
@@ -143,27 +150,31 @@ const Profile = () => {
                                             type={showPassword ? 'text' : 'password'}
                                             value={password}
                                             onChange={(event) => setPassword(event.target.value)}
-                                            InputProps={{ endAdornment:
-                                                <InputAdornment position="end">
-                                                  <IconButton
-                                                    aria-label="toggle password visibility"
-                                                    onClick={handleClickShowPassword}
-                                                    edge="end"
-                                                  >
-                                                    {showPassword ? <VisibilityOff /> : <Visibility />}
-                                                  </IconButton>
-                                                </InputAdornment>
-                                              }}
-                                            
+                                            InputProps={{
+                                                endAdornment:
+                                                    <InputAdornment position="end">
+                                                        <IconButton
+                                                            aria-label="toggle password visibility"
+                                                            onClick={handleClickShowPassword}
+                                                            edge="end"
+                                                        >
+                                                            {showPassword ? <VisibilityOff /> : <Visibility />}
+                                                        </IconButton>
+                                                    </InputAdornment>
+                                            }}
+
                                         /> : "************"}
                                 </TableCell>
                                 <TableCell>
-                                    <IconButton
-                                        color={change ? "secondary" : "primary"}
-                                        onClick={handleChange}
-                                    >
-                                        <EditIcon />
-                                    </IconButton>
+                                    {user.currentUser.role !== "admin" ?
+                                        <IconButton
+                                            color={change ? "secondary" : "primary"}
+                                            onClick={handleChange}
+                                        >
+                                            <EditIcon />
+                                        </IconButton>
+                                        : null
+                                    }
                                 </TableCell>
                             </TableRow>
                         </TableBody>
@@ -171,7 +182,10 @@ const Profile = () => {
                     </Table>
                 </TableContainer>
             </Paper>
-            <Button onClick={editUser}>Update Profile</Button>
+            {user.currentUser.role !== "admin" ?
+                <Button onClick={editUser}>Update Profile</Button>
+                : null
+            }
             <Button
                 variant="contained"
                 color="error"

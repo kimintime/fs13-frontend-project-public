@@ -74,6 +74,7 @@ const UpdateProductModal = ({ id, oldTitle, oldDescription, oldPrice }: EditProd
 
         dispatch(updateProduct(newProduct))
         setOpen(false)
+        navigate("/")
     }
 
     const handleDelete = () => {
