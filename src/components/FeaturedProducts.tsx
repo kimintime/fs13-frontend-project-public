@@ -20,7 +20,7 @@ const FeaturedProducts = () => {
                 products.filter(product => product.id > 38 && product.id < 44).map(product => (
 
                     <Box key={product.id} justifyContent="center" alignItems="center">
-                        <Card sx={{ maxWidth: 345, height: 425, margin: 2 }}>
+                        <Card sx={{ maxWidth: 345, height: 500, margin: 2 }}>
                             <CardMedia
                                 sx={{ height: 140 }}
                                 image={product.images[0]}

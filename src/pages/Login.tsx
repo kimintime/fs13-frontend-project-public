@@ -89,7 +89,7 @@ const Login = () => {
                     <Divider variant="middle" />
                     <Typography align="center">New user?</Typography>
                     <Box sx={{ display: "flexbox", justifyContent: "center", alignItems: "center" }}>
-                        <NavLink to='/register'>
+                        <NavLink to='/register' style={{textDecoration: 'none', color: 'white' }}>
                             <Button
                                 variant="contained"
                                 sx={{ marginTop: 2, width: 300 }}

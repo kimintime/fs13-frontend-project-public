@@ -80,7 +80,15 @@ const Profile = () => {
             />
             <Typography variant="subtitle2">{user.currentUser.name}</Typography>
             <Typography variant="subtitle1">{user.currentUser.role}</Typography>
-
+            {user.currentUser.role !== "admin" ?
+                    <IconButton
+                        color={change ? "secondary" : "primary"}
+                        onClick={handleChange}
+                    >
+                        <EditIcon />
+                    </IconButton>
+                    : null
+                }
             <Paper
                 sx={{ marginTop: 5, p: 2 }}
                 component="form"
@@ -102,17 +110,6 @@ const Profile = () => {
                                             onChange={(event) => setName(event.target.value)}
                                         /> : user.currentUser.name}
                                 </TableCell>
-                                <TableCell>
-                                    {user.currentUser.role !== "admin" ?
-                                        <IconButton
-                                            color={change ? "secondary" : "primary"}
-                                            onClick={handleChange}
-                                        >
-                                            <EditIcon />
-                                        </IconButton>
-                                        : null
-                                    }
-                                </TableCell>
                             </TableRow>
                             <TableRow>
                                 <TableCell>
@@ -125,18 +122,6 @@ const Profile = () => {
                                             value={email}
                                             onChange={(event) => setEmail(event.target.value)}
                                         /> : user.currentUser.email}
-                                </TableCell>
-                                <TableCell>
-                                    {user.currentUser.role !== "admin" ?
-                                        <IconButton
-                                            color={change ? "secondary" : "primary"}
-                                            onClick={handleChange}
-                                        >
-                                            <EditIcon />
-                                        </IconButton>
-                                        : null
-                                    }
-
                                 </TableCell>
                             </TableRow>
                             <TableRow>
@@ -164,17 +149,6 @@ const Profile = () => {
                                             }}
 
                                         /> : "************"}
-                                </TableCell>
-                                <TableCell>
-                                    {user.currentUser.role !== "admin" ?
-                                        <IconButton
-                                            color={change ? "secondary" : "primary"}
-                                            onClick={handleChange}
-                                        >
-                                            <EditIcon />
-                                        </IconButton>
-                                        : null
-                                    }
                                 </TableCell>
                             </TableRow>
                         </TableBody>
