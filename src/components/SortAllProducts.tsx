@@ -16,6 +16,7 @@ import { Box,
 import ArrowUpwardIcon from '@mui/icons-material/ArrowUpward';
 import ArrowDownwardIcon from '@mui/icons-material/ArrowDownward';
 import SearchIcon from '@mui/icons-material/Search';
+import BackspaceIcon from '@mui/icons-material/Backspace';
 import AddProductModal from "./AddProductModal";
 
 import { useAppDispatch } from "../hooks/reduxHook"
@@ -76,6 +77,8 @@ const SortAllProducts = () => {
         if (search === "") {
             dispatch(fetchAllProducts())
         }
+
+        setSearch("")
     }
 
     return (
@@ -131,8 +134,12 @@ const SortAllProducts = () => {
                         sx={{ ml: 1, flex: 1 }}
                         placeholder="Search products"
                         inputProps={{ 'aria-label': 'search' }}
+                        value={search}
                         onChange={(event) => setSearch(event.target.value)}
                     />
+                    <IconButton onClick={() => setSearch("")}>
+                        <BackspaceIcon fontSize="small" />
+                    </IconButton>
                     <IconButton onClick={handleSearch}>
                     <SearchIcon />
                     </IconButton>

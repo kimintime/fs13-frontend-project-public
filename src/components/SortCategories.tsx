@@ -8,15 +8,17 @@ import {
     Radio,
     Paper,
     InputBase,
-    Divider
+    Divider,
+    IconButton
 } from "@mui/material"
 
 import ArrowUpwardIcon from '@mui/icons-material/ArrowUpward';
 import ArrowDownwardIcon from '@mui/icons-material/ArrowDownward';
 import SearchIcon from '@mui/icons-material/Search';
+import BackspaceIcon from '@mui/icons-material/Backspace';
 
 import { useAppDispatch } from "../hooks/reduxHook";
-import { sortByName, filterByName } from "../redux/reducers/categoryReducer";
+import { sortByName, filterByName, fetchCategories } from "../redux/reducers/categoryReducer";
 
 const SortCategories = () => {
     const dispatch = useAppDispatch()
@@ -40,6 +42,12 @@ const SortCategories = () => {
         event.preventDefault()
 
         dispatch(filterByName(search))
+
+        if (search === "") {
+            dispatch(fetchCategories())
+        }
+
+        setSearch("")
     }
 
     return (
@@ -82,9 +90,15 @@ const SortCategories = () => {
                         sx={{ ml: 1, flex: 1 }}
                         placeholder="Search categories"
                         inputProps={{ 'aria-label': 'search' }}
+                        value={search}
                         onChange={(event) => setSearch(event.target.value)}
                     />
+                    <IconButton onClick={() => setSearch("")}>
+                        <BackspaceIcon fontSize="small" />
+                    </IconButton>
+                    <IconButton onClick={handleSearch}>
                     <SearchIcon />
+                    </IconButton>
                 </Paper>
             </Box>
             <Divider variant="middle" />
