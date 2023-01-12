@@ -1,7 +1,4 @@
 import { useEffect, useState } from "react";
-import { useAppDispatch, useAppSelector } from "../hooks/reduxHook"
-import { addToCart, removeFromCart, emptyCart } from "../redux/reducers/cartReducer";
-
 import {
     Box,
     Button,
@@ -17,9 +14,12 @@ import {
     TableRow,
     Typography
 } from "@mui/material";
-
 import RemoveIcon from '@mui/icons-material/Remove';
 import AddIcon from '@mui/icons-material/Add';
+
+import { useAppDispatch, useAppSelector } from "../hooks/reduxHook"
+import { addToCart, removeFromCart, emptyCart } from "../redux/reducers/cartReducer";
+
 
 const Cart = () => {
     const cart = useAppSelector(state => state.cartReducer)
