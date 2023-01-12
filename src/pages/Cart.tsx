@@ -40,8 +40,6 @@ const Cart = () => {
         handleShow()
     })
 
-    console.log(cart)
-
     return (
         <Box style={{
             display: "flex",

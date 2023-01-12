@@ -44,22 +44,6 @@ export const createUser = createAsyncThunk(
     }
 )
 
-// export const createUser = createAsyncThunk(
-//     "createUser",
-//     async (user: CreateUser) => {
-//       try {
-//         const response = await axios.post(
-//           "https://api.escuelajs.co/api/v1/users/",
-//           user
-//         );
-//         const data: User | Error = response.data;
-//         return data;
-//       } catch (e) {
-//         throw new Error("Cannot add new user");
-//       }
-//     }
-//   );
-
 export const updateUser = createAsyncThunk(
     "updateUser",
     async (user: User) => {
@@ -72,7 +56,9 @@ export const updateUser = createAsyncThunk(
                 }
             )
 
-            return res.data
+            const data: User = res.data
+            return data
+            
         } catch (err: any) {
 
             throw new Error("Could not update user")
@@ -124,6 +110,7 @@ const userSlice = createSlice({
     reducers: {
         logoutUser: (state) => {
             state = initialState
+            return state
         }
     },
     extraReducers: (build) => {
@@ -154,8 +141,8 @@ const userSlice = createSlice({
             console.log("Data is loading...")
             return state
         })
-        build.addCase(updateUser.fulfilled, (state, action: PayloadAction<UserList>) => {
-            return action.payload;
+        build.addCase(updateUser.fulfilled, (state, action: PayloadAction<User>) => {
+            return {...state, currentUser: action.payload}
         })
         build.addCase(updateUser.pending, (state, action) => {
             console.log("Data is pending...")

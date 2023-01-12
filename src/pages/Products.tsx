@@ -1,12 +1,10 @@
 import { useEffect } from "react"
 import { useNavigate } from "react-router-dom"
-import { useAppDispatch, useAppSelector } from "../hooks/reduxHook"
-import { fetchAllProducts } from "../redux/reducers/productReducer"
-
 import { Card, CardActions, CardMedia, Button, Typography, Grid, CardContent } from "@mui/material"
 
+import { useAppDispatch, useAppSelector } from "../hooks/reduxHook"
+import { fetchAllProducts } from "../redux/reducers/productReducer"
 import SortAllProducts from "../components/SortAllProducts"
-
 
 const Products = () => {
     const products = useAppSelector(state => state.productReducer)
@@ -15,7 +13,7 @@ const Products = () => {
     
     useEffect(() => {
         dispatch(fetchAllProducts())
-    }, [])
+    }, [dispatch])
 
     return (
         <div>

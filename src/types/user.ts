@@ -22,12 +22,6 @@ export interface CreateUser {
     avatar: URL
 }
 
-export interface EditUser {
-    name: string
-    email: string
-    password: string
-}
-
 export interface Credentials {
     email: string
     password: string

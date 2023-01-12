@@ -1,10 +1,10 @@
 import { useEffect } from "react"
 import { Link } from "react-router-dom"
-import { useAppDispatch, useAppSelector } from "../hooks/reduxHook"
-import { fetchAllProducts } from "../redux/reducers/productReducer"
-
 import { Card, CardActions, CardMedia, Button, Typography, CardContent } from "@mui/material"
 import { Box } from "@mui/system"
+
+import { useAppDispatch, useAppSelector } from "../hooks/reduxHook"
+import { fetchAllProducts } from "../redux/reducers/productReducer"
 
 const FeaturedProducts = () => {
     const products = useAppSelector(state => state.productReducer)

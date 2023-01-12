@@ -1,7 +1,4 @@
 import { useState } from "react";
-import { useAppDispatch } from "../hooks/reduxHook";
-import { sortByName, filterByName } from "../redux/reducers/categoryReducer";
-
 import {
     Box,
     FormControl,
@@ -17,6 +14,9 @@ import {
 import ArrowUpwardIcon from '@mui/icons-material/ArrowUpward';
 import ArrowDownwardIcon from '@mui/icons-material/ArrowDownward';
 import SearchIcon from '@mui/icons-material/Search';
+
+import { useAppDispatch } from "../hooks/reduxHook";
+import { sortByName, filterByName } from "../redux/reducers/categoryReducer";
 
 const SortCategories = () => {
     const dispatch = useAppDispatch()

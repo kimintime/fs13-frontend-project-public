@@ -10,7 +10,7 @@ type propsType = {
 const ProtectedProfile = (props: propsType) => {
     const user = useAppSelector(state => state.userReducer)
 
-    if (!user.currentUser.id) {
+    if (user.currentUser.id === 0) {
         
         return (
             <Navigate to='/login'/>

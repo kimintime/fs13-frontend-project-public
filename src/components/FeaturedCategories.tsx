@@ -1,12 +1,10 @@
 import { useEffect } from "react"
 import { Link } from "react-router-dom"
-import { useAppDispatch, useAppSelector } from "../hooks/reduxHook"
-
-import { fetchCategories } from "../redux/reducers/categoryReducer"
-
-import { Box, Grid, IconButton, ImageList, ImageListItem, ImageListItemBar } from "@mui/material"
+import { Box, IconButton, ImageList, ImageListItem, ImageListItemBar } from "@mui/material"
 import InfoIcon from '@mui/icons-material/Info';
 
+import { useAppDispatch, useAppSelector } from "../hooks/reduxHook"
+import { fetchCategories } from "../redux/reducers/categoryReducer"
 
 const FeaturedCategories = () => {
     const categories = useAppSelector(state => state.categoryReducer)

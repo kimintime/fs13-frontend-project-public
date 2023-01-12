@@ -16,3 +16,11 @@ export interface CreateProduct {
     categoryId: number
     images: string[]
 }
+
+export interface EditProduct {
+    title: string
+    description: string
+    price: number
+    id: number
+}
+

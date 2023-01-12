@@ -6,7 +6,6 @@ import { useAppDispatch, useAppSelector } from "../hooks/reduxHook"
 import { createUser } from "../redux/reducers/userReducer"
 import { userPic } from "../types/images"
 
-
 const Register = () => {
     const user = useAppSelector(state => state.userReducer)
     const dispatch = useAppDispatch()

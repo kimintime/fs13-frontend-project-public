@@ -1,5 +1,4 @@
 import { createBrowserRouter, RouterProvider } from "react-router-dom"
-import Admin from "./pages/Admin"
 import Cart from "./pages/Cart"
 import Root from "./pages/Root"
 import Item from "./pages/Item"
@@ -62,10 +61,6 @@ const App = () => {
             </ProtectedProfile>
           ),
         },
-        {
-          path: "admin",
-          element: <Admin />
-        }
       ]
     }
   ])

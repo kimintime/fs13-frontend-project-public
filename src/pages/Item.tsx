@@ -1,17 +1,18 @@
 import { useEffect, useState } from "react"
 import { useParams } from "react-router-dom"
+import axios from "axios"
+import { Box, Button, Grid, ImageList, ImageListItem, Typography } from "@mui/material"
+import AddShoppingCartIcon from '@mui/icons-material/AddShoppingCart';
+
 import { useAppDispatch } from "../hooks/reduxHook";
 import { addToCart } from "../redux/reducers/cartReducer";
 import { CartItem } from "../types/cart";
-import axios from "axios"
-
-import { Box, Button, Grid, ImageList, ImageListItem, Typography } from "@mui/material"
-import AddShoppingCartIcon from '@mui/icons-material/AddShoppingCart';
 
 import '@fontsource/roboto/300.css';
 import '@fontsource/roboto/400.css';
 import '@fontsource/roboto/500.css';
 import '@fontsource/roboto/700.css';
+import UpdateProductModal from "../components/UpdateProductModal";
 
 const Item = () => {
     const dispatch = useAppDispatch()
@@ -40,6 +41,8 @@ const Item = () => {
 
     useEffect(() => {
         fetchData()
+
+        // eslint-disable-next-line react-hooks/exhaustive-deps
     }, [])
 
     const handleAddToCart = () => {
@@ -65,6 +68,12 @@ const Item = () => {
                         >
                             Add to Cart
                         </Button>
+                        <UpdateProductModal 
+                            oldTitle={product.title} 
+                            oldPrice={product.price} 
+                            oldDescription={product.description}
+                            id={product.id}
+                         />
                     </Typography>
                 </Grid>
                 <Grid item md={6}>

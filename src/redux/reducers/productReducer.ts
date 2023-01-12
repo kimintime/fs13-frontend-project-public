@@ -1,7 +1,7 @@
 import { createAsyncThunk, createSlice, PayloadAction } from "@reduxjs/toolkit";
 import axios, { AxiosResponse } from "axios";
 
-import { CreateProduct, Product } from "../../types/product";
+import { CreateProduct, Product, EditProduct } from "../../types/product";
 
 const initialState: Product[] = []
 
@@ -14,7 +14,7 @@ export const fetchAllProducts = createAsyncThunk(
 
         } catch (e: any) {
 
-            console.log(e)
+            throw new Error("Could not fetch products")
         }
     }
 )
@@ -26,8 +26,7 @@ export const fetchProductsByCategory = createAsyncThunk(
             const res: AxiosResponse<Product[], Product[]> = await axios.get(`https://api.escuelajs.co/api/v1/categories/${id}/products`)
             return res.data
         } catch (e: any) {
-            //Find way to show error
-            console.log(e)
+            throw new Error("Could not fetch products")
         }
     }
 )
@@ -40,7 +39,43 @@ export const createProduct = createAsyncThunk(
             return response.data
 
         } catch (e: any) {
-            console.log(e)
+            throw new Error("Could not create new product")
+        }
+    }
+)
+
+export const updateProduct = createAsyncThunk(
+    "updateProduct",
+    async (item: EditProduct) => {
+        try {
+            const response = await axios.put(
+                "https://api.escuelajs.co/api/v1/products/" + item.id,
+                {
+                    title: item.title,
+                    price: item.price,
+                    description: item.description,
+                }
+            );
+            const data: EditProduct = await response.data;
+            return data;
+
+        } catch (e: any) {
+            throw new Error(e.message);
+        }
+    }
+);
+
+export const deleteProduct = createAsyncThunk(
+    "deleteProduct",
+    async (id: number) => {
+        try {
+            const res: AxiosResponse<Product, Product> = await axios.delete("https://api.escuelajs.co/api/v1/products/" + id)
+
+            const data = res.data
+            return data
+
+        } catch (err: any) {
+            throw new Error("Failed to delete product")
         }
     }
 )
@@ -76,14 +111,13 @@ const productSlice = createSlice({
         filterByName: (state, action) => {
             return state.filter(product => product.title.toLowerCase().includes(action.payload.toLowerCase()));
         },
-
     },
     extraReducers: (build) => {
         build.addCase(fetchAllProducts.fulfilled, (state, action) => {
             if (action.payload) {
                 console.log("Promise fulfilled")
                 return action.payload
-                
+
             } else {
                 return state
             }
@@ -118,7 +152,7 @@ const productSlice = createSlice({
 
             } else {
                 return state
-            } 
+            }
         })
         build.addCase(createProduct.rejected, (state, action) => {
             console.log("Error posting new data")
@@ -128,10 +162,9 @@ const productSlice = createSlice({
             console.log("New data pending...")
             return state
         })
-    }
-})
-
+    },
+});
 
 const productReducer = productSlice.reducer
-export const {sortByName, sortByPrice, sortByCatagory, filterByName} = productSlice.actions
+export const { sortByName, sortByPrice, sortByCatagory, filterByName } = productSlice.actions
 export default productReducer;

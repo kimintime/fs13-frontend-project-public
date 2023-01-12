@@ -1,11 +1,29 @@
 import { useState } from "react"
-import { useAppDispatch } from "../hooks/reduxHook"
-import { sortByName, sortByPrice, sortByCatagory, filterByName, fetchAllProducts } from "../redux/reducers/productReducer"
+import { Box,
+    Button, 
+    FormControl, 
+    InputLabel, 
+    Select, 
+    MenuItem, 
+    Divider, 
+    RadioGroup, 
+    FormControlLabel, 
+    Radio, 
+    Paper, 
+    InputBase, 
+    IconButton } from "@mui/material"
 
-import { Box, Button, FormControl, InputLabel, Select, MenuItem, Divider, RadioGroup, FormControlLabel, Radio, Paper, InputBase, IconButton } from "@mui/material"
 import ArrowUpwardIcon from '@mui/icons-material/ArrowUpward';
 import ArrowDownwardIcon from '@mui/icons-material/ArrowDownward';
 import SearchIcon from '@mui/icons-material/Search';
+import AddProductModal from "./AddProductModal";
+
+import { useAppDispatch } from "../hooks/reduxHook"
+import { sortByName,
+     sortByPrice, 
+     sortByCatagory, 
+     filterByName, 
+     fetchAllProducts } from "../redux/reducers/productReducer"
 
 const SortAllProducts = () => {
     const dispatch = useAppDispatch()
@@ -60,16 +78,6 @@ const SortAllProducts = () => {
         }
     }
 
-    // const addProduct = () => {
-    //     dispatch(createProduct({
-    //         title: "New Test Product",
-    //         price: 10,
-    //         description: "A description",
-    //         categoryId: 1,
-    //         images: ["https://placeimg.com/640/480/any"],
-    //     }))
-    // }
-
     return (
         <Box>
             <Box
@@ -113,17 +121,10 @@ const SortAllProducts = () => {
                         <FormControlLabel value="desc" control={<Radio />} label="Descending" />
                     </RadioGroup>
                 </FormControl>
-                {/* <Button
-                    variant="contained"
-                    type="submit"
-                    size="large"
-                    onClick={addProduct}
-                >
-                    Add
-                </Button> */}
+                <AddProductModal />
                 <Paper
                     component="form"
-                    sx={{ p: '2px 4px', display: 'flex', alignItems: 'center', width: "20%", marginLeft: "5px" }}
+                    sx={{ p: '2px 4px', display: 'flex', alignItems: 'center', width: "20%", marginLeft: 2 }}
                     onSubmit={handleSearch}
                 >
                     <InputBase
@@ -139,7 +140,6 @@ const SortAllProducts = () => {
             </Box>
             <Divider variant="middle" />
         </Box>
-
     )
 }
 

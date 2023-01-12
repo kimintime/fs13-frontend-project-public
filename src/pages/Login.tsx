@@ -1,27 +1,21 @@
 import { useState } from "react"
-import { useAppDispatch, useAppSelector } from "../hooks/reduxHook"
-import { authenticateCredentials } from "../redux/reducers/userReducer"
 import { Box, Button, Divider, Paper, TextField, Typography } from "@mui/material"
 import { NavLink, useNavigate } from "react-router-dom"
 
-
+import { useAppDispatch } from "../hooks/reduxHook"
+import { authenticateCredentials } from "../redux/reducers/userReducer"
 
 const Login = () => {
-    const user = useAppSelector(state => state.userReducer)
     const dispatch = useAppDispatch()
     const navigate = useNavigate()
 
     const [email, setEmail] = useState("")
     const [password, setPassword] = useState("")
 
-
     const handleLogin = () => {
         dispatch(authenticateCredentials({ email: email, password: password }))
         navigate("/")
-
     }
-
-    console.log(user)
 
     return (
         <Box sx={{
