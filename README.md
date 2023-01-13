@@ -96,7 +96,7 @@ admin123
 - By logging into the admin account, it’s possible to test out the admin features of the website. On the Products page, a new button called Add appears, where it’s possible to add new products. On the individual product pages, there’s a new button to modify or delete current products. 
 
 
-<img width="1440" alt="Screen Shot 2023-01-13 at 0 32 55" src="https://user-images.githubusercontent.com/40215472/212195625-96774a6e-2cac-4ca5-ab9a-fcdeda6d18fd.png">
+<img width="1440" alt="Screen Shot 2023-01-13 at 15 35 20" src="https://user-images.githubusercontent.com/40215472/212332511-d0e29412-aa6d-4f96-9de0-28dda8616e1d.png">
 
 <img width="1440" alt="Screen Shot 2023-01-13 at 0 34 13" src="https://user-images.githubusercontent.com/40215472/212195865-c1917821-a8dd-4468-bc38-a40485b53d77.png">
 
