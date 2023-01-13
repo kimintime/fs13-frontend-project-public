@@ -1,13 +1,12 @@
-import { useEffect, useState } from "react"
+import { useState } from "react"
 import { useNavigate } from "react-router-dom"
 import { Box, Button, Divider, Paper, TextField, Typography } from "@mui/material"
 
-import { useAppDispatch, useAppSelector } from "../hooks/reduxHook"
+import { useAppDispatch } from "../hooks/reduxHook"
 import { createUser } from "../redux/reducers/userReducer"
 import { userPic } from "../types/images"
 
 const Register = () => {
-    const user = useAppSelector(state => state.userReducer)
     const dispatch = useAppDispatch()
     const navigate = useNavigate()
 
@@ -29,12 +28,6 @@ const Register = () => {
             navigate("/login")
         }
     }
-
-    useEffect(() => {
-        if (user.currentUser.name !== "Guest") {
-          navigate("/");
-        }
-      }, [user, navigate]);
 
     return (
         <Box

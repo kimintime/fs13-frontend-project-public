@@ -70,7 +70,7 @@ const Profile = () => {
                 flexDirection: "column",
                 justifyContent: "center",
                 alignItems: "center",
-                marginTop: 1,
+                marginTop: 10,
             }}
         >
             <Avatar

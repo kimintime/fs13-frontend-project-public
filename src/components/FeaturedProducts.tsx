@@ -17,7 +17,7 @@ const FeaturedProducts = () => {
     return (
         <Box style={{ display: "flex", flexDirection: "row" }}>
             {
-                products.filter(product => product.id > 38 && product.id < 44).map(product => (
+                products.filter(product => product.id > 45 && product.id < 52).map(product => (
 
                     <Box key={product.id} justifyContent="center" alignItems="center">
                         <Card sx={{ maxWidth: 345, height: 500, margin: 2 }}>

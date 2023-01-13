@@ -16,13 +16,13 @@ const Products = () => {
     }, [dispatch])
 
     return (
-        <div>
+        <div style={{display: "flex", flexDirection: "column", margin: 20}}>
             <SortAllProducts />
-            <Grid container spacing={1} justifyContent="center" alignItems="center" mt={5}>
+            <Grid container spacing={3} mt={1} justifyContent="center" alignItems="center">
                 {
                     products.map(product => (
                         <Grid item key={product.id} xl={3} lg={3} md={4} sm={8} xs={10}>
-                            <Card sx={{ maxWidth: 345 }}>
+                            <Card sx={{ maxWidth: 345, height: 400 }}>
                                 <CardMedia
                                     sx={{ height: 140 }}
                                     image={product.images[0]}
