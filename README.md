@@ -24,14 +24,14 @@ admin123
 (This is by Fakeapi’s design)
 
 ## Instructions
-- The layout of the homepage, all products, and their categories are dependent on the fake API. Having said that, the homepage is limited to showing the first six categories (if they exist), and six products as featured products (if they exist).
+- The layout of the homepage, all products, and their categories are dependent on the fake API. Having said that, the homepage is limited to showing the first five categories (if they exist), and six products as featured products (if they exist). If anything takes a little while to load, just wait a second or two.
 
 
 <img width="1440" alt="Screen Shot 2023-01-13 at 0 22 15" src="https://user-images.githubusercontent.com/40215472/212193739-88fddf18-e2ad-4a46-839e-5f58a57eabda.png">
 
 
 
-- To browse the products in a category, click on information `(i)` button in its bottom heading. Click on `Learn More` to go to an individual product page, and add that product to the cart if you like.
+- To browse the products in a category from the home page, simply click on the picture, or click the roung buttons below to select which category interests you. It's also possible to add items to the cart from the home page.
 
 - From the navbar at the top of the page, you can browse all products, or all categories, access the shopping cart, and the profile page. If not logged-in, the profile page will redirect you to login or register as a new customer.
 
@@ -52,7 +52,7 @@ admin123
 
 
 ### Products and Categories Pages
-- The pages for all products and all categories allows you to sort ascending or descending according to name, category name, or price. The sort button changes according to ascending or descending.
+- The pages for all products and all categories allows you to sort ascending or descending according to name, category name, or price. The sort button changes according to ascending or descending. You may also add items to cart from the respective products pages.
 
 
 <img width="1440" alt="Screen Shot 2023-01-12 at 22 57 07" src="https://user-images.githubusercontent.com/40215472/212194202-0f09eebb-0a6e-4806-a220-c8f1300af6ea.png">
@@ -64,7 +64,7 @@ admin123
 <img width="1440" alt="Screen Shot 2023-01-13 at 0 27 59" src="https://user-images.githubusercontent.com/40215472/212194555-0c84a061-7bf9-491f-9bf0-b765acdfff5e.png">
 
 
-- The reason there is a separate page for browsing by product and by category, and where there is a search feature just for category, is that being an open API, people are always adding to it, there can sometimes be many categories, so only featured categories are shown on the home page. Users should be able to browse all categories if they wish.
+- The reason there is a separate page for browsing by product and by category, and why there is a search feature just for category, is that being an open API, people are always adding to it, there can sometimes be many categories, so only featured categories are shown on the home page. Users should be able to browse all categories if they wish.
 
 - The search feature on these pages allows you to search products on the product page, and categories on the categories page. Clicking the search button or hitting enter will show all results, and there’s a backspace button to clear your search quickly (Does not appear in all screenshots).
 
