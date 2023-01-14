@@ -1,14 +1,31 @@
 import { useEffect } from "react"
 import { Link } from "react-router-dom"
-import { Card, CardActions, CardMedia, Button, Typography, CardContent } from "@mui/material"
-import { Box } from "@mui/system"
+import { Box, Card, CardActions, CardMedia, Button, Typography, CardContent } from "@mui/material"
+import AddShoppingCartIcon from '@mui/icons-material/AddShoppingCart';
 
 import { useAppDispatch, useAppSelector } from "../hooks/reduxHook"
 import { fetchAllProducts } from "../redux/reducers/productReducer"
+import { CartItem } from "../types/cart";
+import { addToCart } from "../redux/reducers/cartReducer";
 
 const FeaturedProducts = () => {
     const products = useAppSelector(state => state.productReducer)
     const dispatch = useAppDispatch()
+
+    let product: CartItem = {
+        id: 0,
+        title: '',
+        category: { name: '', id: 0, image: '' },
+        description: '',
+        price: 0,
+        images: [],
+        amount: 1,
+    }
+
+    const handleAddToCart = (data: any) => {
+        product = data
+        dispatch(addToCart(product))
+    }
 
     useEffect(() => {
         dispatch(fetchAllProducts())
@@ -17,7 +34,7 @@ const FeaturedProducts = () => {
     return (
         <Box style={{ display: "flex", flexDirection: "row" }}>
             {
-                products.filter(product => product.id > 45 && product.id < 52).map(product => (
+                products.filter(product => product.id > 45 && product.id < 51).map(product => (
 
                     <Box key={product.id} justifyContent="center" alignItems="center">
                         <Card sx={{ maxWidth: 345, height: 500, margin: 2 }}>
@@ -38,13 +55,25 @@ const FeaturedProducts = () => {
                                 </Typography>
                             </CardContent>
                             <CardActions>
-                                <Link to={`/products/${product.id}`}>
+                                <Box ml={4}>
+                                    <Link to={`/products/${product.id}`}>
+                                        <Button
+                                            size="small"
+                                        >
+                                            Learn More
+                                        </Button>
+
+                                    </Link>
                                     <Button
-                                        size="small"
+                                        variant="outlined"
+                                        color="success"
+                                        endIcon={<AddShoppingCartIcon />}
+                                        style={{ marginLeft: "10px" }}
+                                        onClick={() => handleAddToCart(product)}
                                     >
-                                        Learn More
+                                        Add to Cart
                                     </Button>
-                                </Link>
+                                </Box>
                             </CardActions>
                         </Card>
                     </Box>

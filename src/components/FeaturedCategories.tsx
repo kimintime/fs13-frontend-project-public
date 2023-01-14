@@ -1,10 +1,12 @@
 import { useEffect } from "react"
 import { Link } from "react-router-dom"
-import { Box, IconButton, ImageList, ImageListItem, ImageListItemBar } from "@mui/material"
-import InfoIcon from '@mui/icons-material/Info';
+import { Box, Paper, Typography } from "@mui/material"
+import Carousel from "react-material-ui-carousel";
 
 import { useAppDispatch, useAppSelector } from "../hooks/reduxHook"
 import { fetchCategories } from "../redux/reducers/categoryReducer"
+
+
 
 const FeaturedCategories = () => {
     const categories = useAppSelector(state => state.categoryReducer)
@@ -17,33 +19,25 @@ const FeaturedCategories = () => {
     return (
         <div>
             <Box justifyContent="center" alignItems="center">
-                <ImageList cols={3}>
+                <Carousel>
                     {
-                        categories.filter(category => category.id < 7).map(category => (
-                            <ImageListItem key={category.id}>
-                                <img
-                                    src={`${category.image}?w=248&fit=crop&auto=format`}
-                                    srcSet={`${category.image}?w=248&fit=crop&auto=format&dpr=2 2x`}
-                                    alt={category.name}
-                                    loading="lazy"
-                                />
-                                <ImageListItemBar
-                                    title={category.name}
-                                    actionIcon={
-                                        <Link to={`/categories/${category.id}/products`}>
-                                            <IconButton
-                                                sx={{ color: 'rgba(255, 255, 255, 0.54)' }}
-                                                aria-label={`info about ${category.name}`}
-                                            >
-                                                <InfoIcon />
-                                            </IconButton>
-                                        </Link>
-                                    }
-                                />
-                            </ImageListItem>
+                        categories.filter(category => category.id < 6).map(category => (
+                            <Paper>
+                                <Typography variant="h6" textAlign="center">Browse {category.name}</Typography>
+                                <Link to={`/categories/${category.id}/products`}>
+                                    <img
+                                        key={category.id}
+                                        alt={category.name}
+                                        src={category.image}
+                                        style={{
+                                            height: '100%',
+                                            width: '100%'
+                                        }} />
+                                </Link>
+                            </Paper>
                         ))
                     }
-                </ImageList>
+                </Carousel>
             </Box>
         </div>
     )

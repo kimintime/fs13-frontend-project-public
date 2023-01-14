@@ -15,14 +15,15 @@ const Home = () => {
         <Box style={{
             display: "flex",
             flexDirection: "column",
-            alignItems: "center",
             justifyContent: "center",
+            alignItems: "center",
+            
             marginTop: "15px",
-            width: "100%"
+           
         }}>
             <Typography variant="h2">Welcome to the Fake Store</Typography>
             <Typography variant="subtitle1">Where the items are made up, and the shop doesn't deliver!</Typography>
-            <Box mt={5}>
+            <Box mt={5} width={600} height="100%">
                 <FeaturedCategories />
             </Box>
             <Typography variant="h6">Browse featured products</Typography>
