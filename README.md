@@ -27,7 +27,7 @@ admin123
 - The layout of the homepage, all products, and their categories are dependent on the fake API. Having said that, the homepage is limited to showing the first five categories (if they exist), and six products as featured products (if they exist). If anything takes a little while to load, just wait a second or two.
 
 
-<img width="1440" alt="Screen Shot 2023-01-13 at 0 22 15" src="https://user-images.githubusercontent.com/40215472/212193739-88fddf18-e2ad-4a46-839e-5f58a57eabda.png">
+<img width="1440" alt="Screen Shot 2023-01-14 at 23 39 28" src="https://user-images.githubusercontent.com/40215472/212498770-b9cb94e5-fa5e-41aa-bee1-b3ae14a15084.png">
 
 
 
@@ -55,7 +55,7 @@ admin123
 - The pages for all products and all categories allows you to sort ascending or descending according to name, category name, or price. The sort button changes according to ascending or descending. You may also add items to cart from the respective products pages.
 
 
-<img width="1440" alt="Screen Shot 2023-01-12 at 22 57 07" src="https://user-images.githubusercontent.com/40215472/212194202-0f09eebb-0a6e-4806-a220-c8f1300af6ea.png">
+<img width="1440" alt="Screen Shot 2023-01-14 at 23 41 23" src="https://user-images.githubusercontent.com/40215472/212498797-e899d73b-e6ec-4bc6-a736-7526c263a7d8.png">
 
 
 - In the case of the categories page, the sorting option is only of course by name.
