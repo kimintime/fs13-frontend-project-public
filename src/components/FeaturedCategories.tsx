@@ -22,19 +22,19 @@ const FeaturedCategories = () => {
                 <Carousel>
                     {
                         categories.filter(category => category.id < 6).map(category => (
-                            <Paper>
-                                <Typography variant="h6" textAlign="center">Browse {category.name}</Typography>
-                                <Link to={`/categories/${category.id}/products`}>
-                                    <img
-                                        key={category.id}
-                                        alt={category.name}
-                                        src={category.image}
-                                        style={{
-                                            height: '100%',
-                                            width: '100%'
-                                        }} />
-                                </Link>
-                            </Paper>
+                                <Paper sx={{height: 480, textAlign: "center"}}>
+                                    <Typography variant="h6" textAlign="center">Browse {category.name}</Typography>
+                                    <Link to={`/categories/${category.id}/products`}>
+                                        <img
+                                            key={category.id}
+                                            alt={category.name}
+                                            src={category.image}
+                                            style={{
+                                                height: '92%',
+                                                width: '92%'
+                                            }} />
+                                    </Link>
+                                </Paper>
                         ))
                     }
                 </Carousel>
