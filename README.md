@@ -26,9 +26,7 @@ admin123
 ## Instructions
 - The layout of the homepage, all products, and their categories are dependent on the fake API. Having said that, the homepage is limited to showing the first five categories (if they exist), and six products as featured products (if they exist). If anything takes a little while to load, just wait a second or two.
 
-
-<img width="1440" alt="Screen Shot 2023-01-14 at 23 39 28" src="https://user-images.githubusercontent.com/40215472/212498770-b9cb94e5-fa5e-41aa-bee1-b3ae14a15084.png">
-
+<img width="1440" alt="Screen Shot 2023-01-15 at 13 07 14" src="https://user-images.githubusercontent.com/40215472/212537282-9b6e4cac-fbcf-413a-ae77-e213a702dba4.png">
 
 
 - To browse the products in a category from the home page, simply click on the picture, or click the roung buttons below to select which category interests you. It's also possible to add items to the cart from the home page.
@@ -47,15 +45,14 @@ admin123
 
 - The shopping cart badge appears with a count of items in the cart, if there’s anything in the cart.
 
-
-<img width="1440" alt="Screen Shot 2023-01-12 at 18 53 47" src="https://user-images.githubusercontent.com/40215472/212194109-e285dfc7-063c-48ee-8ef8-05d9bc4a8666.png">
+<img width="1440" alt="Screen Shot 2023-01-15 at 13 08 57" src="https://user-images.githubusercontent.com/40215472/212537394-c3bd72d5-28ef-4808-9463-519ec7a804f3.png">
 
 
 ### Products and Categories Pages
 - The pages for all products and all categories allows you to sort ascending or descending according to name, category name, or price. The sort button changes according to ascending or descending. You may also add items to cart from the respective products pages.
 
 
-<img width="1440" alt="Screen Shot 2023-01-14 at 23 41 23" src="https://user-images.githubusercontent.com/40215472/212498797-e899d73b-e6ec-4bc6-a736-7526c263a7d8.png">
+<img width="1440" alt="Screen Shot 2023-01-15 at 13 08 31" src="https://user-images.githubusercontent.com/40215472/212537317-649dfe6e-df09-47a3-8905-5b43ee46d157.png">
 
 
 - In the case of the categories page, the sorting option is only of course by name.
@@ -95,12 +92,11 @@ admin123
 
 - By logging into the admin account, it’s possible to test out the admin features of the website. On the Products page, a new button called Add appears, where it’s possible to add new products. On the individual product pages, there’s a new button to modify or delete current products. 
 
-
-<img width="1440" alt="Screen Shot 2023-01-13 at 15 35 20" src="https://user-images.githubusercontent.com/40215472/212332511-d0e29412-aa6d-4f96-9de0-28dda8616e1d.png">
+<img width="1440" alt="Screen Shot 2023-01-15 at 13 15 36" src="https://user-images.githubusercontent.com/40215472/212537577-4da70d6c-b2c5-4db6-85c7-363ecc33f43d.png">
 
 <img width="1440" alt="Screen Shot 2023-01-13 at 0 34 13" src="https://user-images.githubusercontent.com/40215472/212195865-c1917821-a8dd-4468-bc38-a40485b53d77.png">
 
-<img width="1440" alt="Screen Shot 2023-01-12 at 18 58 14" src="https://user-images.githubusercontent.com/40215472/212195931-454c2ee2-594a-4f98-ab07-fa014af238c9.png">
+<img width="1440" alt="Screen Shot 2023-01-15 at 13 15 59" src="https://user-images.githubusercontent.com/40215472/212537625-89f31d3f-6361-4170-9bc6-ee125ebeae87.png">
 
 <img width="1440" alt="Screen Shot 2023-01-12 at 18 58 48" src="https://user-images.githubusercontent.com/40215472/212195972-48889b53-84c5-4771-9f84-b0690e70294d.png">
 
