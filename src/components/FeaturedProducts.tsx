@@ -1,6 +1,6 @@
 import { useEffect } from "react"
 import { Link } from "react-router-dom"
-import { Box, Card, CardActions, CardMedia, Button, Typography, CardContent } from "@mui/material"
+import { Box, Card, CardActions, CardMedia, Button, Typography, CardContent, Divider } from "@mui/material"
 import AddShoppingCartIcon from '@mui/icons-material/AddShoppingCart';
 
 import { useAppDispatch, useAppSelector } from "../hooks/reduxHook"
@@ -37,32 +37,34 @@ const FeaturedProducts = () => {
                 products.filter(product => product.id > 45 && product.id < 51).map(product => (
 
                     <Box key={product.id} justifyContent="center" alignItems="center">
-                        <Card sx={{ maxWidth: 345, height: 500, margin: 2 }}>
-                            <CardMedia
-                                sx={{ height: 140 }}
-                                image={product.images[0]}
-                                title={product.title}
-                            />
+                        <Card sx={{ maxWidth: 300, height: 400, margin: 2 }}>
+                            <Link to={`/products/${product.id}`}>
+                                <CardMedia
+                                    sx={{ height: 140 }}
+                                    image={product.images[0]}
+                                    title={product.title}
+                                />
+                            </Link>
                             <CardContent>
-                                <Typography gutterBottom variant="h5" component="div">
-                                    {product.title} €{product.price}.00
+                                <Typography gutterBottom variant="h6" component="div" align="center">
+                                    {product.title}
                                 </Typography>
-                                <Typography variant="h6">
+                                <Typography variant="subtitle2" align="center">
                                     {product.category.name}
                                 </Typography>
-                                <Typography variant="body2" color="text.secondary">
-                                    {product.description}
+                                <Divider variant="middle" />
+                                <Typography gutterBottom variant="h6" align="center">
+                                    €{product.price}.00
                                 </Typography>
                             </CardContent>
                             <CardActions>
-                                <Box ml={4}>
+                                <Box textAlign="center">
                                     <Link to={`/products/${product.id}`}>
                                         <Button
                                             size="small"
                                         >
                                             Learn More
                                         </Button>
-
                                     </Link>
                                     <Button
                                         variant="outlined"

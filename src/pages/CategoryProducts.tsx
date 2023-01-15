@@ -1,6 +1,6 @@
 import { useEffect } from "react"
 import { Link, useParams } from "react-router-dom"
-import { Card, CardActions, CardMedia, Button, Typography, Grid, CardContent, Box } from "@mui/material"
+import { Card, CardActions, CardMedia, Button, Typography, Grid, CardContent, Box, Divider } from "@mui/material"
 import AddShoppingCartIcon from '@mui/icons-material/AddShoppingCart';
 
 import { useAppDispatch, useAppSelector } from "../hooks/reduxHook"
@@ -38,11 +38,11 @@ const CategoryProducts = () => {
         <div style={{ display: "flex", flexDirection: "column", flex: 1 }}>
             <SortAllProducts />
             <Box display="flex" justifyContent="center">
-                <Grid container spacing={2} mt={1} justifyContent="center" alignItems="center" maxWidth="lg">
+                <Grid container spacing={2} mt={1} justifyContent="center" alignItems="center" maxWidth="md">
                     {
                         products.map(product => (
                             <Grid item key={product.id} md={4} sm={8} xs={10} justifyContent="center">
-                                <Card sx={{ maxWidth: 350, height: 450 }}>
+                                <Card sx={{ maxWidth: 300, height: 400 }}>
                                     <Link to={`/products/${product.id}`}>
                                         <CardMedia
                                             sx={{ height: 140 }}
@@ -52,17 +52,18 @@ const CategoryProducts = () => {
                                     </Link>
                                     <CardContent>
                                         <Typography gutterBottom variant="h5" component="div" align="center">
-                                            {product.title} €{product.price}.00
+                                            {product.title}
                                         </Typography>
-                                        <Typography variant="h6">
+                                        <Typography variant="subtitle2" align="center">
                                             {product.category.name}
                                         </Typography>
-                                        <Typography ml={2} variant="body2" color="text.secondary">
-                                            {product.description}
+                                        <Divider variant="middle" />
+                                        <Typography gutterBottom variant="h5" align="center">
+                                            €{product.price}.00
                                         </Typography>
                                     </CardContent>
                                     <CardActions>
-                                        <Box ml={4}>
+                                        <Box textAlign="center">
                                             <Link to={`/products/${product.id}`}>
                                                 <Button
                                                     size="small"

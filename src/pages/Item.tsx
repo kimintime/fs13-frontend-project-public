@@ -1,8 +1,9 @@
 import { useEffect, useState } from "react"
 import { useParams } from "react-router-dom"
 import axios from "axios"
-import { Box, Button, Grid, ImageList, ImageListItem, Typography } from "@mui/material"
+import { Box, Button, Grid, Paper, Typography } from "@mui/material"
 import AddShoppingCartIcon from '@mui/icons-material/AddShoppingCart';
+import Carousel from "react-material-ui-carousel";
 
 import { useAppDispatch } from "../hooks/reduxHook";
 import { addToCart } from "../redux/reducers/cartReducer";
@@ -51,43 +52,47 @@ const Item = () => {
     }
 
     return (
-        <Box justifyContent="center" alignItems="center" >
-            <Grid container justifyContent="center" alignItems="center">
+        <Box display="flex" justifyContent="center" alignItems="center" >
+            <Grid container justifyContent="center" alignItems="center" maxWidth="md">
                 <Grid item md={4} mr={10}>
                     <Typography variant="h3" textAlign="center">{product.title}</Typography>
                     <Typography variant="subtitle1" textAlign="center">{product.category.name}</Typography>
                     <Typography variant="body1" mt={5}>{product.description}</Typography>
                     <Typography variant="h4" mt={5} textAlign="center">
                         €{product.price}.00
-                        <Button 
-                            variant="contained" 
-                            color="success" 
-                            endIcon={<AddShoppingCartIcon />} 
+                        <Button
+                            variant="contained"
+                            color="success"
+                            endIcon={<AddShoppingCartIcon />}
                             style={{ marginLeft: "10px" }}
                             onClick={() => handleAddToCart()}
                         >
                             Add to Cart
                         </Button>
-                        <UpdateProductModal 
-                            oldTitle={product.title} 
-                            oldPrice={product.price} 
+                        <UpdateProductModal
+                            oldTitle={product.title}
+                            oldPrice={product.price}
                             oldDescription={product.description}
                             id={product.id}
-                         />
+                        />
                     </Typography>
                 </Grid>
-                <Grid item md={6}>
-                    <ImageList cols={2} gap={8}>
-                        {product.images.map((item) => (
-                            <ImageListItem key={item}>
-                                <img
-                                    src={item}
-                                    alt={product.title}
-                                    loading="lazy"
-                                />
-                            </ImageListItem>
-                        ))}
-                    </ImageList>
+                <Grid item md={6} mt={5}>
+                    <Carousel>
+                        {
+                            product.images.map(item => (
+                                <Paper sx={{ height: 480, textAlign: "center" }} key={item}>
+                                    <img
+                                        alt={product.title}
+                                        src={item}
+                                        style={{
+                                            height: '82%',
+                                            width: '92%'
+                                        }} />
+                                </Paper>
+                            ))
+                        }
+                    </Carousel>
                 </Grid>
             </Grid>
         </Box>
