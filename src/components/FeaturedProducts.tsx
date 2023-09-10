@@ -1,16 +1,17 @@
-import { useEffect } from "react"
+import { useEffect, useState } from "react"
 import { Link } from "react-router-dom"
 import { Box, Card, CardActions, CardMedia, Button, Typography, CardContent, Divider } from "@mui/material"
 import AddShoppingCartIcon from '@mui/icons-material/AddShoppingCart';
 
 import { useAppDispatch, useAppSelector } from "../hooks/reduxHook"
-import { fetchAllProducts } from "../redux/reducers/productReducer"
 import { CartItem } from "../types/cart";
 import { addToCart } from "../redux/reducers/cartReducer";
+import { Product } from "../types/product";
 
 const FeaturedProducts = () => {
     const products = useAppSelector(state => state.productReducer)
     const dispatch = useAppDispatch()
+    const [featuredProducts, setFeaturedProducts] = useState<Product[]>([]);
 
     let product: CartItem = {
         id: 0,
@@ -28,13 +29,16 @@ const FeaturedProducts = () => {
     }
 
     useEffect(() => {
-        dispatch(fetchAllProducts())
-    }, [dispatch])
+        const availableProducts = products.filter((product) => !!product);
+        const firstFiveProducts = availableProducts.slice(0, 5);
+    
+        setFeaturedProducts(firstFiveProducts);
+      }, [products]);
 
     return (
         <Box style={{ display: "flex", flexDirection: "row" }}>
             {
-                products.filter(product => product.id > 45 && product.id < 51).map(product => (
+                featuredProducts.map(product => (
 
                     <Box key={product.id} justifyContent="center" alignItems="center">
                         <Card sx={{ maxWidth: 300, height: 400, margin: 2 }}>
