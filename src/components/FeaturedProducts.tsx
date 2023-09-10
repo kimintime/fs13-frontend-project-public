@@ -3,13 +3,13 @@ import { Link } from "react-router-dom"
 import { Box, Card, CardActions, CardMedia, Button, Typography, CardContent, Divider } from "@mui/material"
 import AddShoppingCartIcon from '@mui/icons-material/AddShoppingCart';
 
-import { useAppDispatch, useAppSelector } from "../hooks/reduxHook"
+import { useAppDispatch } from "../hooks/reduxHook"
 import { CartItem } from "../types/cart";
 import { addToCart } from "../redux/reducers/cartReducer";
 import { Product } from "../types/product";
+import { fetchAllProducts } from "../redux/reducers/productReducer";
 
 const FeaturedProducts = () => {
-    const products = useAppSelector(state => state.productReducer)
     const dispatch = useAppDispatch()
     const [featuredProducts, setFeaturedProducts] = useState<Product[]>([]);
 
@@ -27,15 +27,26 @@ const FeaturedProducts = () => {
         product = data
         dispatch(addToCart(product))
     }
-    
+
     useEffect(() => {
-        const availableProducts = products.filter((product) => !!product);
+        // Fetch all products
+        dispatch(fetchAllProducts()).then((response) => {
 
-        const maxFeaturedProducts = 5;
-        const firstFiveProducts = availableProducts.slice(0, maxFeaturedProducts);
+          // Check if the API call was successful
+          if (response.payload) {
+            const allProducts: Product[] = response.payload as Product[];
 
-        setFeaturedProducts(firstFiveProducts);
-      }, [products]);
+            // Filter the first five products from allProducts
+            const maxFeaturedProducts = 5;
+            const featuredProducts = allProducts.slice(0, maxFeaturedProducts);
+            setFeaturedProducts(featuredProducts);
+          } else {
+            // Handle the case where the API call fails
+            console.error("Failed to fetch products");
+          }
+        });
+      }, [dispatch]);
+      
 
     return (
         <Box style={{ display: "flex", flexDirection: "row" }}>
