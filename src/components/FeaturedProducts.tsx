@@ -27,11 +27,13 @@ const FeaturedProducts = () => {
         product = data
         dispatch(addToCart(product))
     }
-
+    
     useEffect(() => {
         const availableProducts = products.filter((product) => !!product);
-        const firstFiveProducts = availableProducts.slice(0, 5);
-    
+
+        const maxFeaturedProducts = 5;
+        const firstFiveProducts = availableProducts.slice(0, maxFeaturedProducts);
+
         setFeaturedProducts(firstFiveProducts);
       }, [products]);
 
